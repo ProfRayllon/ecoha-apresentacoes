@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ecoha · Apresentações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --roxo: #38164e;
+    --roxo-escuro: #2a0f3b;
+    --ciano: #22c9d6;
+    --ciano-claro: #9fe9f0;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--roxo);
+    color: #fff;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    overflow: hidden;
+  }
+
+  /* Anéis da matriz gráfica */
+  .aneis { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+  .anel {
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    border: 2px solid var(--ciano);
+    transform: translate(-50%, -50%);
+    animation: anel 1.6s cubic-bezier(.16,.84,.24,1) both;
+  }
+  .anel.a1 { left: -6vw;  width: 42vw;  height: 42vw;  opacity: .9; }
+  .anel.a2 { left: -6vw;  width: 70vw;  height: 70vw;  opacity: .6; animation-delay: .12s; }
+  .anel.a3 { left: -6vw;  width: 104vw; height: 104vw; opacity: .35; animation-delay: .24s; }
+  .anel.a4 { left: 106vw; width: 60vw;  height: 60vw;  opacity: .12; border-color: #fff; animation-delay: .36s; }
+
+  main {
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(28px, 5vh, 64px);
+    padding: clamp(24px, 5vh, 64px) clamp(16px, 5vw, 96px);
+  }
+
+  .logo { width: clamp(180px, 17vw, 330px); height: auto; display: block; animation: sobe .9s cubic-bezier(.16,.84,.24,1) both; }
+
+  .titulo { text-align: center; animation: sobe .9s cubic-bezier(.16,.84,.24,1) .12s both; }
+  .titulo small {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-size: clamp(12px, 1vw, 18px); font-weight: 600; letter-spacing: .24em; text-transform: uppercase;
+    color: var(--ciano);
+  }
+  .titulo small::before, .titulo small::after { content: ""; width: 40px; height: 2px; background: var(--ciano); }
+  .titulo h1 {
+    margin: 14px 0 0;
+    font-size: clamp(26px, 3.2vw, 60px); font-weight: 700; letter-spacing: -.02em; line-height: 1.1;
+  }
+
+  .opcoes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(16px, 2.4vw, 44px);
+    width: min(100%, 1480px);
+  }
+
+  .opcao {
+    position: relative;
+    display: flex; flex-direction: column; gap: clamp(12px, 1.6vh, 22px);
+    padding: clamp(24px, 3vw, 56px);
+    border-radius: 10px;
+    background: rgba(66,30,92,.82);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.14);
+    color: #fff; text-decoration: none;
+    overflow: hidden;
+    transition: transform .35s cubic-bezier(.16,.84,.24,1), background .35s, border-color .35s, box-shadow .35s;
+    animation: sobe .9s cubic-bezier(.16,.84,.24,1) both;
+  }
+  .opcao:nth-child(1) { animation-delay: .24s; }
+  .opcao:nth-child(2) { animation-delay: .36s; }
+  .opcao::before {
+    content: ""; position: absolute; left: 0; top: 0; height: 5px; width: 100%;
+    background: var(--ciano); transform: scaleX(.18); transform-origin: left;
+    transition: transform .5s cubic-bezier(.16,.84,.24,1);
+  }
+  .opcao:hover, .opcao:focus-visible {
+    transform: translateY(-6px);
+    background: rgba(80,38,110,.9);
+    border-color: rgba(34,201,214,.6);
+    box-shadow: 0 40px 80px -40px rgba(0,0,0,.6);
+    outline: none;
+  }
+  .opcao:hover::before, .opcao:focus-visible::before { transform: scaleX(1); }
+
+  .num { font-size: clamp(13px, 1vw, 18px); font-weight: 600; letter-spacing: .2em; color: rgba(255,255,255,.55); }
+  .nome { font-size: clamp(34px, 4.4vw, 84px); font-weight: 700; line-height: .98; letter-spacing: -.035em; }
+  .nome span { color: var(--ciano); }
+  .desc { font-size: clamp(15px, 1.35vw, 26px); font-weight: 400; line-height: 1.35; color: rgba(255,255,255,.85); max-width: 30ch; text-wrap: pretty; }
+
+  .botao {
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: clamp(12px, 1.2vw, 20px) clamp(20px, 2vw, 34px);
+    border-radius: 999px;
+    background: var(--ciano); color: var(--roxo-escuro);
+    font-size: clamp(14px, 1.15vw, 22px); font-weight: 700;
+    transition: background .3s, gap .3s;
+  }
+  .botao svg { width: 1.1em; height: 1.1em; }
+  .opcao:hover .botao, .opcao:focus-visible .botao { background: #fff; gap: 20px; }
+
+  .rodape {
+    font-size: clamp(11px, .85vw, 15px); color: rgba(255,255,255,.5); letter-spacing: .04em; text-align: center;
+    animation: aparece 1s ease .6s both;
+  }
+  .rodape kbd {
+    font-family: inherit; font-weight: 600; color: #fff;
+    border: 1px solid rgba(255,255,255,.3); border-radius: 4px; padding: 1px 7px; margin: 0 2px;
+  }
+
+  @keyframes sobe { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+  @keyframes aparece { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes anel { from { opacity: 0; transform: translate(-50%, -50%) scale(.75); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } }
+
+  @media (max-width: 760px) {
+    body { overflow: auto; }
+    .opcoes { grid-template-columns: 1fr; }
+    .rodape { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="aneis" aria-hidden="true">
+    <div class="anel a1"></div><div class="anel a2"></div><div class="anel a3"></div><div class="anel a4"></div>
+  </div>
+
+  <main>
+    <img class="logo" src="Viva%20Educa%C3%A7%C3%A3o/assets/ecoha-logo-white.png" alt="ecoha">
+
+    <div class="titulo">
+      <small>Programas ecoha</small>
+      <h1>Qual apresentação vamos começar?</h1>
+    </div>
+
+    <nav class="opcoes">
+      <a class="opcao" href="Viva%20Educa%C3%A7%C3%A3o/Apresentacao.html">
+        <div class="num">01</div>
+        <div class="nome">VIVA<br><span>Educação</span></div>
+        <div class="desc">Programa de Educação Positiva e Bem-Estar</div>
+        <div class="botao">Iniciar apresentação
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+
+      <a class="opcao" href="VIVA%20Letramento/Apresentacao.html">
+        <div class="num">02</div>
+        <div class="nome">VIVA<br><span>Letramento</span></div>
+        <div class="desc">Programa de Desenvolvimento da Linguagem e do Pensamento Matemático</div>
+        <div class="botao">Iniciar apresentação
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+    </nav>
+
+    <div class="rodape">Pressione <kbd>1</kbd> ou <kbd>2</kbd> para escolher &nbsp;·&nbsp; <kbd>F11</kbd> tela cheia</div>
+  </main>
+
+<script>
+  var opcoes = document.querySelectorAll('.opcao');
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '1' && opcoes[0]) opcoes[0].click();
+    else if (e.key === '2' && opcoes[1]) opcoes[1].click();
+  });
+</script>
+</body>
+</html>

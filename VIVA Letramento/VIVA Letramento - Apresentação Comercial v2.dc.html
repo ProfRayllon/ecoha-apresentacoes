@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #1d0b2b; }
+  a { color: #561a7e; text-decoration: none; }
+  a:hover { color: #24ccd8; }
+  @keyframes vUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+  @keyframes vIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes vLine { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
+  @keyframes vPop { from { opacity: 0; transform: scale(.86); } to { opacity: 1; transform: scale(1); } }
+  @keyframes vPopC { from { opacity: 0; transform: translate(-50%,-50%) scale(.86); } to { opacity: 1; transform: translate(-50%,-50%) scale(1); } }
+  @keyframes vLeft { from { opacity: 0; transform: translateX(-44px); } to { opacity: 1; transform: none; } }
+  @keyframes vRing { from { opacity: 0; transform: scale(.72) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+  [data-deck-active] [data-anim="up"] { animation: vUp .66s cubic-bezier(.22,.9,.24,1) both; }
+  [data-deck-active] [data-anim="in"] { animation: vIn .8s ease both; }
+  [data-deck-active] [data-anim="line"] { animation: vLine .7s cubic-bezier(.22,.9,.24,1) both; transform-origin: left center; }
+  [data-deck-active] [data-anim="pop"] { animation: vPop .52s cubic-bezier(.3,1.45,.5,1) both; }
+  [data-deck-active] [data-anim="popc"] { animation: vPopC .52s cubic-bezier(.3,1.45,.5,1) both; }
+  [data-deck-active] [data-anim="left"] { animation: vLeft .6s cubic-bezier(.22,.9,.24,1) both; }
+  [data-deck-active] [data-anim="ring"] { animation: vRing 1.3s cubic-bezier(.22,.9,.24,1) both; }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) {
+    background: #38164e !important;
+    color: #fff !important;
+  }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="color:#4a3360"] { color: #e8dff2 !important; }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="color:#561a7e"] { color: #9fe9f0 !important; }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="color:#38164e"] { color: #fff !important; }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="color:#e0d5ec"] { color: rgba(255,255,255,.34) !important; }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="background:#f7f3fb"] {
+    background: #4a2365 !important;
+  }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="background:#38164e"] {
+    background: #fff !important;
+    color: #38164e !important;
+  }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="background:#fff"] {
+    background: #fff !important;
+    color: #38164e !important;
+  }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="background:#fff"] [style*="color:#4a3360"] { color: #4a3360 !important; }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="background:#fff"] [style*="color:#561a7e"] { color: #561a7e !important; }
+  section[data-label]:not([data-label="Capa"]):not([data-label="Encerramento"]) [style*="background:#fff"] [style*="color:#38164e"] { color: #38164e !important; }
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Capa" data-speaker-notes="Abertura. Nome do programa, abrangência e assinatura Ecoha." style="background:#f7f3fb;font-family:Manrope,sans-serif;color:#38164e;display:flex;align-items:center;padding:0 130px;overflow:hidden">
+  <div data-anim="ring" style="position:absolute;left:-540px;top:-160px;width:1400px;height:1400px;border-radius:50%;border:2px solid rgba(34,201,214,.85);pointer-events:none"></div>
+  <div data-anim="ring" style="position:absolute;left:-420px;top:-40px;width:1160px;height:1160px;border-radius:50%;border:2px solid rgba(34,201,214,.55);pointer-events:none;animation-delay:.15s"></div>
+  <div data-anim="ring" style="position:absolute;left:-300px;top:80px;width:920px;height:920px;border-radius:50%;border:2px solid rgba(34,201,214,.3);pointer-events:none;animation-delay:.3s"></div>
+  <div style="position:relative;margin-left:760px;width:1000px;display:flex;flex-direction:column;gap:40px">
+    <img data-anim="in" src="assets/ecoha-purple.png" alt="Ecoha" style="width:300px;height:auto;display:block" />
+    <div data-anim="up" style="display:flex;flex-direction:column;gap:16px;animation-delay:.15s">
+      <div style="font:700 124px/.98 Poppins,sans-serif;letter-spacing:-.035em;color:#38164e">VIVA <span style="color:#24ccd8">Letramento</span></div>
+      <div style="font:400 38px/1.28 Manrope,sans-serif;color:#561a7e;max-width:1040px">Programa de Desenvolvimento da Linguagem e do Pensamento Matemático</div>
+    </div>
+    <div data-anim="line" style="width:200px;height:4px;background:#24ccd8;animation-delay:.45s"></div>
+    <div data-anim="up" style="font:500 44px/1.3 Manrope,sans-serif;color:#0f9aa8;text-wrap:pretty;animation-delay:.55s">Da Educação Infantil aos Anos Finais do Ensino Fundamental.</div>
+  </div>
+</section>
+
+<section data-label="O desafio" data-speaker-notes="Quatro desafios que explicam por que ações isoladas não mudam resultados." style="background:#fff;display:flex;flex-direction:column;justify-content:center;gap:56px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#561a7e">O desafio</div>
+    <h2 data-anim="up" style="margin:0;font:600 72px/1.06 Poppins,sans-serif;letter-spacing:-.02em;max-width:1500px">Aprendizagem não se transforma com ações isoladas</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:28px">
+    <div data-anim="up" style="display:flex;flex-direction:column;gap:14px;border-top:5px solid #24ccd8;padding-top:26px"><div style="font:700 56px/1 Poppins,sans-serif;color:#e0d5ec">01</div><div style="font:600 32px/1.14 Poppins,sans-serif">Formações pontuais</div><div style="font:500 26px/1.4 Manrope,sans-serif;color:#4a3360">Pouca continuidade entre formação e prática.</div></div>
+    <div data-anim="up" style="display:flex;flex-direction:column;gap:14px;border-top:5px solid #24ccd8;padding-top:26px;animation-delay:.1s"><div style="font:700 56px/1 Poppins,sans-serif;color:#e0d5ec">02</div><div style="font:600 32px/1.14 Poppins,sans-serif">Práticas fragmentadas</div><div style="font:500 26px/1.4 Manrope,sans-serif;color:#4a3360">Escolas e professores nem sempre caminham por referenciais comuns.</div></div>
+    <div data-anim="up" style="display:flex;flex-direction:column;gap:14px;border-top:5px solid #24ccd8;padding-top:26px;animation-delay:.2s"><div style="font:700 56px/1 Poppins,sans-serif;color:#e0d5ec">03</div><div style="font:600 32px/1.14 Poppins,sans-serif">Dados pouco utilizados</div><div style="font:500 26px/1.4 Manrope,sans-serif;color:#4a3360">Avaliações existem, mas nem sempre se transformam em intervenção.</div></div>
+    <div data-anim="up" style="display:flex;flex-direction:column;gap:14px;border-top:5px solid #561a7e;padding-top:26px;animation-delay:.3s"><div style="font:700 56px/1 Poppins,sans-serif;color:#e0d5ec">04</div><div style="font:600 32px/1.14 Poppins,sans-serif">Dificuldades que se acumulam</div><div style="font:500 26px/1.4 Manrope,sans-serif;color:#4a3360">Lacunas de Linguagens e Matemática acompanham os estudantes ao longo da escolarização.</div></div>
+  </div>
+  <p data-anim="in" style="margin:0;font:600 38px/1.28 Poppins,sans-serif;color:#561a7e;max-width:1500px;animation-delay:.45s">Melhorar resultados exige transformar a aprendizagem em uma agenda permanente da rede.</p>
+</section>
+
+<section data-label="A proposta" data-speaker-notes="Conceito central e o fluxo do programa." style="background:#f7f3fb;display:flex;flex-direction:column;justify-content:center;gap:60px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#561a7e">A proposta</div>
+    <h2 data-anim="up" style="margin:0;font:600 72px/1.06 Poppins,sans-serif;letter-spacing:-.02em;max-width:1450px">Uma rede inteira aprendendo na mesma direção</h2>
+    <p data-anim="up" style="margin:10px 0 0;font:500 34px/1.38 Manrope,sans-serif;color:#4a3360;max-width:1560px;animation-delay:.14s">O VIVA Letramento é um programa integrado de consultoria, formação continuada, acompanhamento pedagógico e monitoramento, construído junto às redes municipais para fortalecer o desenvolvimento da linguagem e do pensamento matemático.</p>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div data-anim="pop" style="flex:1;background:#fff;border-bottom:5px solid #24ccd8;padding:28px 10px;text-align:center;font:700 25px/1.2 Manrope,sans-serif;letter-spacing:.04em">DIAGNOSTICAR</div>
+    <div data-anim="pop" style="flex:1;background:#fff;border-bottom:5px solid #24ccd8;padding:28px 10px;text-align:center;font:700 25px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.07s">PLANEJAR</div>
+    <div data-anim="pop" style="flex:1;background:#fff;border-bottom:5px solid #24ccd8;padding:28px 10px;text-align:center;font:700 25px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.14s">FORMAR</div>
+    <div data-anim="pop" style="flex:1;background:#fff;border-bottom:5px solid #24ccd8;padding:28px 10px;text-align:center;font:700 25px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.21s">APLICAR</div>
+    <div data-anim="pop" style="flex:1;background:#fff;border-bottom:5px solid #561a7e;padding:28px 10px;text-align:center;font:700 25px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.28s">ACOMPANHAR</div>
+    <div data-anim="pop" style="flex:1;background:#fff;border-bottom:5px solid #561a7e;padding:28px 10px;text-align:center;font:700 25px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.35s">MONITORAR</div>
+    <div data-anim="pop" style="flex:1;background:#38164e;color:#fff;border-bottom:5px solid #24ccd8;padding:28px 10px;text-align:center;font:700 25px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.42s">REPLANEJAR</div>
+  </div>
+</section>
+
+<section data-label="Nosso propósito" data-speaker-notes="Propósito no centro, quatro resultados ao redor." style="background:#fff;display:flex;flex-direction:column;justify-content:center;gap:48px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <h2 data-anim="up" style="margin:0;font:600 60px/1.08 Poppins,sans-serif;letter-spacing:-.02em;max-width:1500px">Mais do que formar professores. Fortalecer a capacidade da rede.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:24px 560px;position:relative">
+    <div data-anim="up" style="background:#f7f3fb;padding:34px 34px;font:600 32px/1.2 Poppins,sans-serif;border-left:5px solid #24ccd8">Professores mais preparados</div>
+    <div data-anim="up" style="background:#f7f3fb;padding:34px 34px;font:600 32px/1.2 Poppins,sans-serif;border-left:5px solid #24ccd8;animation-delay:.1s">Práticas pedagógicas mais consistentes</div>
+    <div data-anim="up" style="background:#f7f3fb;padding:34px 34px;font:600 32px/1.2 Poppins,sans-serif;border-left:5px solid #561a7e;animation-delay:.2s">Gestão orientada por evidências</div>
+    <div data-anim="up" style="background:#f7f3fb;padding:34px 34px;font:600 32px/1.2 Poppins,sans-serif;border-left:5px solid #561a7e;animation-delay:.3s">Estudantes aprendendo mais</div>
+    <div data-anim="in" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:440px;height:440px;border-radius:50%;background:#38164e;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:48px;box-sizing:border-box;font:700 34px/1.22 Poppins,sans-serif;animation-delay:.42s">Construir uma cultura de aprendizagem</div>
+  </div>
+  <p data-anim="in" style="margin:0;font:600 34px/1.3 Poppins,sans-serif;color:#561a7e;animation-delay:.55s">Autonomia para cada escola. Direção comum para toda a rede.</p>
+</section>
+
+<section data-label="Trajetória completa" data-speaker-notes="Da Educação Infantil ao 9º ano. Ponto-chave: não é só alfabetização." style="background:#f7f3fb;display:flex;flex-direction:column;justify-content:center;gap:52px;padding:0 100px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+      <h2 data-anim="up" style="margin:0;font:600 68px/1.06 Poppins,sans-serif;letter-spacing:-.02em">Da primeira infância ao 9º ano</h2>
+    </div>
+    <div data-anim="in" style="display:flex;gap:28px;padding-bottom:10px">
+      <div style="display:flex;align-items:center;gap:12px;font:700 24px/1 Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#4a3360"><span style="width:20px;height:20px;background:#24ccd8;border-radius:50%"></span>Linguagens</div>
+      <div style="display:flex;align-items:center;gap:12px;font:700 24px/1 Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#4a3360"><span style="width:20px;height:20px;background:#561a7e;border-radius:50%"></span>Pensamento matemático</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+    <div data-anim="up" style="background:#fff;padding:40px 34px;display:flex;flex-direction:column;gap:18px;min-height:470px">
+      <div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#561a7e">Educação Infantil</div>
+      <div style="font:600 38px/1.1 Poppins,sans-serif">Primeiras Aprendizagens</div>
+      <div style="width:56px;height:5px;background:#24ccd8"></div>
+      <div style="font:500 26px/1.45 Manrope,sans-serif;color:#4a3360">Linguagem oral • experiências de leitura e escrita • pensamento matemático</div>
+    </div>
+    <div data-anim="up" style="background:#fff;padding:40px 34px;display:flex;flex-direction:column;gap:18px;min-height:470px;animation-delay:.1s">
+      <div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#561a7e">1º e 2º anos</div>
+      <div style="font:600 38px/1.1 Poppins,sans-serif">Alfabetização</div>
+      <div style="width:56px;height:5px;background:#24ccd8"></div>
+      <div style="font:500 26px/1.45 Manrope,sans-serif;color:#4a3360">Leitura • escrita • numeracia • resolução de problemas</div>
+    </div>
+    <div data-anim="up" style="background:#fff;padding:40px 34px;display:flex;flex-direction:column;gap:18px;min-height:470px;animation-delay:.2s">
+      <div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#561a7e">3º ao 5º ano</div>
+      <div style="font:600 38px/1.1 Poppins,sans-serif">Consolidação</div>
+      <div style="width:56px;height:5px;background:#561a7e"></div>
+      <div style="font:500 26px/1.45 Manrope,sans-serif;color:#4a3360">Compreensão • produção escrita • raciocínio matemático</div>
+    </div>
+    <div data-anim="up" style="background:#38164e;color:#fff;padding:40px 34px;display:flex;flex-direction:column;gap:18px;min-height:470px;animation-delay:.3s">
+      <div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#24ccd8">6º ao 9º ano</div>
+      <div style="font:600 38px/1.1 Poppins,sans-serif">Aprofundamento</div>
+      <div style="width:56px;height:5px;background:#24ccd8"></div>
+      <div style="font:500 26px/1.45 Manrope,sans-serif;color:#e8dff2">Leitura crítica • argumentação • pensamento matemático • resolução de problemas</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Ciclo VIVA" data-speaker-notes="O ciclo contínuo de oito etapas, com a aprendizagem no centro." style="background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;padding:56px 80px;box-sizing:border-box;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#561a7e">Como o VIVA funciona</div>
+    <h2 data-anim="up" style="margin:0;font:600 56px/1.06 Poppins,sans-serif;letter-spacing:-.02em;text-align:center">Um ciclo contínuo de desenvolvimento</h2>
+  </div>
+  <div style="position:relative;width:1560px;height:780px">
+    <div data-anim="ring" style="position:absolute;left:50%;top:50%;width:760px;height:460px;margin:-230px 0 0 -380px;border:2px dashed #cdbcdd;border-radius:50%"></div>
+    <div data-anim="popc" style="position:absolute;left:50%;top:50%;width:300px;height:300px;margin:0;transform:translate(-50%,-50%);border-radius:50%;background:#38164e;color:#fff;display:flex;align-items:center;justify-content:center;font:700 34px/1.2 Poppins,sans-serif;letter-spacing:.04em;animation-delay:.6s">APRENDIZAGEM</div>
+    <div data-anim="popc" style="position:absolute;left:780px;top:70px;transform:translate(-50%,-50%);width:290px;text-align:center"><div style="font:700 26px/1 Poppins,sans-serif;color:#24ccd8">1</div><div style="font:600 32px/1.1 Poppins,sans-serif;margin-top:6px">Conhecer</div><div style="font:500 25px/1.3 Manrope,sans-serif;color:#4a3360;margin-top:6px">Diagnóstico</div></div>
+    <div data-anim="popc" style="position:absolute;left:1240px;top:190px;transform:translate(-50%,-50%);width:290px;text-align:center;animation-delay:.07s"><div style="font:700 26px/1 Poppins,sans-serif;color:#24ccd8">2</div><div style="font:600 32px/1.1 Poppins,sans-serif;margin-top:6px">Planejar</div><div style="font:500 25px/1.3 Manrope,sans-serif;color:#4a3360;margin-top:6px">Prioridades e metas</div></div>
+    <div data-anim="popc" style="position:absolute;left:1420px;top:390px;transform:translate(-50%,-50%);width:290px;text-align:center;animation-delay:.14s"><div style="font:700 26px/1 Poppins,sans-serif;color:#24ccd8">3</div><div style="font:600 32px/1.1 Poppins,sans-serif;margin-top:6px">Desenvolver</div><div style="font:500 25px/1.3 Manrope,sans-serif;color:#4a3360;margin-top:6px">Formação e mentoria</div></div>
+    <div data-anim="popc" style="position:absolute;left:1240px;top:590px;transform:translate(-50%,-50%);width:290px;text-align:center;animation-delay:.21s"><div style="font:700 26px/1 Poppins,sans-serif;color:#24ccd8">4</div><div style="font:600 32px/1.1 Poppins,sans-serif;margin-top:6px">Aplicar</div><div style="font:500 25px/1.3 Manrope,sans-serif;color:#4a3360;margin-top:6px">Práticas e intervenções</div></div>
+    <div data-anim="popc" style="position:absolute;left:780px;top:710px;transform:translate(-50%,-50%);width:290px;text-align:center;animation-delay:.28s"><div style="font:700 26px/1 Poppins,sans-serif;color:#561a7e">5</div><div style="font:600 32px/1.1 Poppins,sans-serif;margin-top:6px">Compartilhar</div><div style="font:500 25px/1.3 Manrope,sans-serif;color:#4a3360;margin-top:6px">Comunidades de Prática</div></div>
+    <div data-anim="popc" style="position:absolute;left:320px;top:590px;transform:translate(-50%,-50%);width:290px;text-align:center;animation-delay:.35s"><div style="font:700 26px/1 Poppins,sans-serif;color:#561a7e">6</div><div style="font:600 32px/1.1 Poppins,sans-serif;margin-top:6px">Acompanhar</div><div style="font:500 25px/1.3 Manrope,sans-serif;color:#4a3360;margin-top:6px">Presença + plataforma</div></div>
+    <div data-anim="popc" style="position:absolute;left:140px;top:390px;transform:translate(-50%,-50%);width:290px;text-align:center;animation-delay:.42s"><div style="font:700 26px/1 Poppins,sans-serif;color:#561a7e">7</div><div style="font:600 32px/1.1 Poppins,sans-serif;margin-top:6px">Replanejar</div><div style="font:500 25px/1.3 Manrope,sans-serif;color:#4a3360;margin-top:6px">Dados e resultados</div></div>
+    <div data-anim="popc" style="position:absolute;left:320px;top:190px;transform:translate(-50%,-50%);width:290px;text-align:center;animation-delay:.49s"><div style="font:700 26px/1 Poppins,sans-serif;color:#561a7e">8</div><div style="font:600 32px/1.1 Poppins,sans-serif;margin-top:6px">Sistematizar</div><div style="font:500 25px/1.3 Manrope,sans-serif;color:#4a3360;margin-top:6px">Práticas e aprendizados</div></div>
+  </div>
+</section>
+
+<section data-label="Diagnóstico e planejamento" data-speaker-notes="Duas entregas iniciais: Mapa de Prioridades e Plano de Desenvolvimento." style="background:#f7f3fb;display:flex;flex-direction:column;justify-content:center;gap:44px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#561a7e">Diagnóstico e planejamento</div>
+    <h2 data-anim="up" style="margin:0;font:600 64px/1.06 Poppins,sans-serif;letter-spacing:-.02em">Primeiro, compreender a realidade da rede</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div data-anim="up" style="background:#fff;border-left:8px solid #24ccd8;padding:38px 44px;display:flex;align-items:center;gap:48px">
+      <div style="min-width:540px;font:600 40px/1.12 Poppins,sans-serif">Mapa de Prioridades da Aprendizagem</div>
+      <div style="font:500 28px/1.4 Manrope,sans-serif;color:#4a3360">Leitura integrada de <strong style="font-weight:700;color:#38164e">dados + indicadores + práticas + necessidades + escuta da rede</strong></div>
+    </div>
+    <div data-anim="in" style="align-self:center;font:700 40px/1 Manrope,sans-serif;color:#561a7e;animation-delay:.2s">↓</div>
+    <div data-anim="up" style="background:#38164e;color:#fff;border-left:8px solid #24ccd8;padding:38px 44px;display:flex;align-items:center;gap:48px;animation-delay:.28s">
+      <div style="min-width:540px;font:600 40px/1.12 Poppins,sans-serif">Plano de Desenvolvimento da Aprendizagem</div>
+      <div style="font:500 28px/1.4 Manrope,sans-serif;color:#e8dff2">Define <strong style="font-weight:700;color:#fff">prioridades + metas + ações + responsabilidades + acompanhamento</strong></div>
+    </div>
+  </div>
+  <p data-anim="in" style="margin:0;font:600 32px/1.3 Poppins,sans-serif;color:#561a7e;animation-delay:.45s">Cada município começa de um lugar diferente. O VIVA começa pela realidade da rede.</p>
+</section>
+
+<section data-label="Formação continuada" data-speaker-notes="Mosaico de formatos ao redor da ideia de formação situada." style="background:#fff;display:flex;flex-direction:column;justify-content:center;gap:40px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <h2 data-anim="up" style="margin:0;font:600 64px/1.06 Poppins,sans-serif;letter-spacing:-.02em">Formação que chega à prática</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:20px;height:600px">
+    <div data-anim="pop" style="background:#f7f3fb;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:600 32px/1.16 Poppins,sans-serif">Encontros Formativos</div>
+    <div data-anim="pop" style="background:#f7f3fb;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:600 32px/1.16 Poppins,sans-serif;animation-delay:.08s">Oficinas Pedagógicas</div>
+    <div data-anim="pop" style="background:#f7f3fb;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:600 32px/1.16 Poppins,sans-serif;animation-delay:.16s">Workshops</div>
+    <div data-anim="pop" style="background:#f7f3fb;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:600 32px/1.16 Poppins,sans-serif;animation-delay:.24s">Laboratórios de Práticas</div>
+    <div data-anim="pop" style="background:#38164e;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px;animation-delay:.4s"><div style="width:48px;height:5px;background:#24ccd8"></div><div style="font:700 40px/1.1 Poppins,sans-serif">Formação situada</div></div>
+    <div data-anim="pop" style="background:#f7f3fb;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:600 32px/1.16 Poppins,sans-serif;animation-delay:.32s">Rodas de Discussão</div>
+    <div data-anim="pop" style="background:#f7f3fb;grid-column:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font:600 32px/1.16 Poppins,sans-serif;animation-delay:.48s">Encontros Acadêmicos</div>
+  </div>
+  <p data-anim="in" style="margin:0;font:500 30px/1.35 Manrope,sans-serif;color:#4a3360;max-width:1500px;animation-delay:.58s">Os dados, desafios e práticas da própria rede orientam os percursos formativos.</p>
+</section>
+
+<section data-label="Comunidades de prática" data-speaker-notes="Diferencial: professores aprendendo com professores." style="background:#38164e;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:48px;padding:0 120px;font-family:Manrope,sans-serif;color:#fff">
+  <div style="position:relative;display:flex;flex-direction:column;gap:18px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <h2 data-anim="up" style="margin:0;font:600 68px/1.06 Poppins,sans-serif;letter-spacing:-.02em">Professores aprendendo com professores</h2>
+  </div>
+  <div style="position:relative;display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+    <div data-anim="pop" style="border:2px solid #7b5b96;padding:18px 28px;font:700 25px/1 Manrope,sans-serif;letter-spacing:.04em">COMPARTILHAR</div>
+    <div data-anim="pop" style="border:2px solid #7b5b96;padding:18px 28px;font:700 25px/1 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.07s">ANALISAR</div>
+    <div data-anim="pop" style="border:2px solid #7b5b96;padding:18px 28px;font:700 25px/1 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.14s">CONSTRUIR</div>
+    <div data-anim="pop" style="border:2px solid #7b5b96;padding:18px 28px;font:700 25px/1 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.21s">APLICAR</div>
+    <div data-anim="pop" style="border:2px solid #7b5b96;padding:18px 28px;font:700 25px/1 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.28s">AVALIAR</div>
+    <div data-anim="pop" style="background:#24ccd8;color:#1d0b2b;padding:18px 28px;font:700 25px/1 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.35s">COMPARTILHAR</div>
+  </div>
+  <p data-anim="up" style="position:relative;margin:0;font:500 34px/1.38 Manrope,sans-serif;color:#e8dff2;max-width:1500px;animation-delay:.44s">Comunidades permanentes organizadas por segmentos e áreas para discutir desafios reais, analisar práticas e construir soluções coletivamente.</p>
+  <div style="position:relative;display:flex;gap:14px;flex-wrap:wrap">
+    <span data-anim="in" style="background:rgba(255,255,255,.1);padding:16px 26px;font:600 26px/1 Manrope,sans-serif;animation-delay:.52s">Primeiras Aprendizagens</span>
+    <span data-anim="in" style="background:rgba(255,255,255,.1);padding:16px 26px;font:600 26px/1 Manrope,sans-serif;animation-delay:.58s">Alfabetização</span>
+    <span data-anim="in" style="background:rgba(255,255,255,.1);padding:16px 26px;font:600 26px/1 Manrope,sans-serif;animation-delay:.64s">Linguagens</span>
+    <span data-anim="in" style="background:rgba(255,255,255,.1);padding:16px 26px;font:600 26px/1 Manrope,sans-serif;animation-delay:.7s">Matemática</span>
+  </div>
+</section>
+
+<section data-label="Presença e acompanhamento" data-speaker-notes="Ponto Focal Ecoha articulando todos os atores, mais mentorias especializadas." style="background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;padding:48px 100px;box-sizing:border-box;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#561a7e">Presença e acompanhamento</div>
+    <h2 data-anim="up" style="margin:0;font:600 58px/1.06 Poppins,sans-serif;letter-spacing:-.02em;text-align:center">A Ecoha acompanha a rede durante o percurso</h2>
+  </div>
+  <div style="position:relative;width:1500px;height:520px">
+    <div data-anim="ring" style="position:absolute;left:50%;top:50%;width:1120px;height:400px;margin:-200px 0 0 -560px;border:2px dashed #cdbcdd;border-radius:50%"></div>
+    <div data-anim="popc" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:330px;height:330px;border-radius:50%;background:#38164e;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;box-sizing:border-box;font:700 34px/1.18 Poppins,sans-serif">Ponto Focal Ecoha</div>
+    <div data-anim="popc" style="position:absolute;left:750px;top:44px;transform:translate(-50%,-50%);background:#f7f3fb;padding:18px 30px;font:600 28px/1 Manrope,sans-serif;animation-delay:.12s">Secretaria</div>
+    <div data-anim="popc" style="position:absolute;left:1330px;top:200px;transform:translate(-50%,-50%);background:#f7f3fb;padding:18px 30px;font:600 28px/1 Manrope,sans-serif;animation-delay:.19s">Gestores</div>
+    <div data-anim="popc" style="position:absolute;left:1130px;top:452px;transform:translate(-50%,-50%);background:#f7f3fb;padding:18px 30px;font:600 28px/1 Manrope,sans-serif;animation-delay:.26s">Coordenadores</div>
+    <div data-anim="popc" style="position:absolute;left:380px;top:452px;transform:translate(-50%,-50%);background:#f7f3fb;padding:18px 30px;font:600 28px/1 Manrope,sans-serif;animation-delay:.33s">Professores</div>
+    <div data-anim="popc" style="position:absolute;left:170px;top:200px;transform:translate(-50%,-50%);background:#f7f3fb;padding:18px 30px;font:600 28px/1 Manrope,sans-serif;animation-delay:.4s">Especialistas Ecoha</div>
+  </div>
+  <div data-anim="in" style="display:flex;flex-direction:column;align-items:center;gap:10px;animation-delay:.5s">
+    <div style="font:700 28px/1 Manrope,sans-serif;color:#561a7e">+ Mentorias Especializadas</div>
+    <div style="font:500 26px/1.35 Manrope,sans-serif;color:#4a3360;text-align:center">Educação Infantil • Alfabetização • Linguagens • Matemática • Avaliação • Currículo • Gestão Pedagógica</div>
+  </div>
+  <p data-anim="up" style="margin:0;font:600 34px/1.2 Poppins,sans-serif;color:#38164e;animation-delay:.6s">A formação não termina quando o encontro acaba.</p>
+</section>
+
+<section data-label="Plataforma VIVA" data-speaker-notes="Três perfis de uso. Tecnologia a serviço da presença pedagógica." style="background:#f7f3fb;display:flex;flex-direction:column;justify-content:center;gap:40px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#561a7e">Plataforma VIVA</div>
+    <h2 data-anim="up" style="margin:0;font:600 64px/1.06 Poppins,sans-serif;letter-spacing:-.02em">Acompanhar para tomar melhores decisões</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div data-anim="up" style="background:#fff;padding:40px 36px;display:flex;flex-direction:column;gap:18px;border-top:6px solid #24ccd8;min-height:320px"><div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#561a7e">Professor</div><div style="font:500 30px/1.4 Manrope,sans-serif">Materiais • registros • atividades • evidências • acompanhamento</div></div>
+    <div data-anim="up" style="background:#fff;padding:40px 36px;display:flex;flex-direction:column;gap:18px;border-top:6px solid #561a7e;min-height:320px;animation-delay:.12s"><div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#561a7e">Gestão</div><div style="font:500 30px/1.4 Manrope,sans-serif">Participação • execução • prioridades • indicadores • escolas</div></div>
+    <div data-anim="up" style="background:#fff;padding:40px 36px;display:flex;flex-direction:column;gap:18px;border-top:6px solid #24ccd8;min-height:320px;animation-delay:.24s"><div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#561a7e">Ecoha</div><div style="font:500 30px/1.4 Manrope,sans-serif">Acompanhamento • demandas • evidências • planejamento • resultados</div></div>
+  </div>
+  <div data-anim="in" style="display:flex;flex-direction:column;gap:14px;animation-delay:.36s">
+    <p style="margin:0;font:600 36px/1.26 Poppins,sans-serif;color:#38164e;max-width:1560px">Uma plataforma para registrar, organizar, acompanhar e transformar informações em decisões.</p>
+    <p style="margin:0;font:500 26px/1.35 Manrope,sans-serif;color:#561a7e">Tecnologia a serviço da presença pedagógica — não em substituição a ela.</p>
+  </div>
+</section>
+
+<section data-label="Estudantes em movimento" data-speaker-notes="Calendário VIVA: o programa acontecendo concretamente no município." style="background:#fff;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);font-family:Manrope,sans-serif;color:#38164e">
+  <div data-anim="in" style="position:relative;background:#f7f3fb">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 26px/1.3 Manrope,sans-serif;color:#a892bd;text-align:center;padding:40px">Espaço para foto de estudantes</div>
+  </div>
+  <div style="display:flex;flex-direction:column;justify-content:center;gap:34px;padding:0 90px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+      <h2 data-anim="up" style="margin:0;font:600 52px/1.08 Poppins,sans-serif;letter-spacing:-.02em">Aprendizagem também se constrói vivendo experiências</h2>
+      <div data-anim="in" style="font:700 28px/1.2 Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#561a7e;animation-delay:.16s">Calendário VIVA de Aprendizagem</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div data-anim="pop" style="background:#f7f3fb;border-left:4px solid #24ccd8;padding:20px 22px;font:600 26px/1.25 Manrope,sans-serif">Semana Municipal da Leitura</div>
+      <div data-anim="pop" style="background:#f7f3fb;border-left:4px solid #24ccd8;padding:20px 22px;font:600 26px/1.25 Manrope,sans-serif;animation-delay:.07s">Mostra de Produção Textual</div>
+      <div data-anim="pop" style="background:#f7f3fb;border-left:4px solid #561a7e;padding:20px 22px;font:600 26px/1.25 Manrope,sans-serif;animation-delay:.14s">Desafio de Resolução de Problemas</div>
+      <div data-anim="pop" style="background:#f7f3fb;border-left:4px solid #24ccd8;padding:20px 22px;font:600 26px/1.25 Manrope,sans-serif;animation-delay:.21s">Circuito de Leitura</div>
+      <div data-anim="pop" style="background:#f7f3fb;border-left:4px solid #561a7e;padding:20px 22px;font:600 26px/1.25 Manrope,sans-serif;animation-delay:.28s">Olimpíada Municipal de Raciocínio</div>
+      <div data-anim="pop" style="background:#f7f3fb;border-left:4px solid #24ccd8;padding:20px 22px;font:600 26px/1.25 Manrope,sans-serif;animation-delay:.35s">Festival das Primeiras Linguagens</div>
+    </div>
+    <p data-anim="in" style="margin:0;font:600 30px/1.3 Poppins,sans-serif;color:#561a7e;animation-delay:.45s">Professores, estudantes e escolas mobilizados em torno da aprendizagem.</p>
+  </div>
+</section>
+
+<section data-label="Metodologia da rede" data-speaker-notes="Referencial construído com a rede — o conhecimento permanece no município." style="background:#f7f3fb;display:flex;flex-direction:column;justify-content:center;gap:44px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#561a7e">Uma metodologia da própria rede</div>
+    <h2 data-anim="up" style="margin:0;font:600 64px/1.06 Poppins,sans-serif;letter-spacing:-.02em">O conhecimento construído permanece no município</h2>
+  </div>
+  <div data-anim="up" style="background:#38164e;color:#fff;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:48px;animation-delay:.14s">
+    <div style="font:700 44px/1.1 Poppins,sans-serif;max-width:900px">Referencial de Práticas Pedagógicas da Rede</div>
+    <div style="font:500 28px/1.35 Manrope,sans-serif;color:#e8dff2;max-width:520px">Construído progressivamente com os profissionais.</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+    <div data-anim="pop" style="background:#fff;padding:26px 30px;font:600 30px/1.2 Poppins,sans-serif;border-bottom:4px solid #24ccd8">Planejamento</div>
+    <div data-anim="pop" style="background:#fff;padding:26px 30px;font:600 30px/1.2 Poppins,sans-serif;border-bottom:4px solid #24ccd8;animation-delay:.07s">Ensino</div>
+    <div data-anim="pop" style="background:#fff;padding:26px 30px;font:600 30px/1.2 Poppins,sans-serif;border-bottom:4px solid #24ccd8;animation-delay:.14s">Avaliação</div>
+    <div data-anim="pop" style="background:#fff;padding:26px 30px;font:600 30px/1.2 Poppins,sans-serif;border-bottom:4px solid #561a7e;animation-delay:.21s">Intervenção</div>
+    <div data-anim="pop" style="background:#fff;padding:26px 30px;font:600 30px/1.2 Poppins,sans-serif;border-bottom:4px solid #561a7e;animation-delay:.28s">Acompanhamento</div>
+    <div data-anim="pop" style="background:#fff;padding:26px 30px;font:600 30px/1.2 Poppins,sans-serif;border-bottom:4px solid #561a7e;animation-delay:.35s">Práticas de Linguagens e Matemática</div>
+  </div>
+  <p data-anim="in" style="margin:0;font:600 32px/1.3 Poppins,sans-serif;color:#561a7e;max-width:1600px;animation-delay:.45s">Não entregamos uma metodologia pronta. Construímos com a rede caminhos comuns para ensinar e acompanhar a aprendizagem.</p>
+</section>
+
+<section data-label="Monitoramento" data-speaker-notes="Sala de Situação da Aprendizagem: dados que levam à decisão." style="background:#fff;display:flex;flex-direction:column;justify-content:center;gap:48px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#561a7e">Sala de Situação da Aprendizagem</div>
+    <h2 data-anim="up" style="margin:0;font:600 68px/1.06 Poppins,sans-serif;letter-spacing:-.02em">Dados que levam à ação</h2>
+  </div>
+  <div style="display:flex;align-items:stretch;gap:10px">
+    <div data-anim="pop" style="flex:1;background:#f7f3fb;padding:30px 12px;text-align:center;font:700 26px/1.2 Manrope,sans-serif;letter-spacing:.04em">PRIORIDADE</div>
+    <div data-anim="pop" style="flex:1;background:#f7f3fb;padding:30px 12px;text-align:center;font:700 26px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.08s">META</div>
+    <div data-anim="pop" style="flex:1;background:#f7f3fb;padding:30px 12px;text-align:center;font:700 26px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.16s">AÇÃO</div>
+    <div data-anim="pop" style="flex:1;background:#f7f3fb;padding:30px 12px;text-align:center;font:700 26px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.24s">EVIDÊNCIA</div>
+    <div data-anim="pop" style="flex:1;background:#561a7e;color:#fff;padding:30px 12px;text-align:center;font:700 26px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.32s">RESULTADO</div>
+    <div data-anim="pop" style="flex:1;background:#24ccd8;color:#1d0b2b;padding:30px 12px;text-align:center;font:700 26px/1.2 Manrope,sans-serif;letter-spacing:.04em;animation-delay:.4s">DECISÃO</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px">
+    <div data-anim="left" style="display:flex;flex-direction:column;gap:10px;border-left:5px solid #24ccd8;padding-left:26px"><div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#561a7e">Quem participa</div><div style="font:600 32px/1.3 Poppins,sans-serif">Ecoha + Secretaria + equipes pedagógicas</div></div>
+    <div data-anim="left" style="display:flex;flex-direction:column;gap:10px;border-left:5px solid #561a7e;padding-left:26px;animation-delay:.1s"><div style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#561a7e">O que analisamos</div><div style="font:500 28px/1.35 Manrope,sans-serif;color:#4a3360">Indicadores da rede + avaliações internas + SAEB + IDEB + indicadores de alfabetização</div></div>
+  </div>
+  <p data-anim="in" style="margin:0;font:600 36px/1.26 Poppins,sans-serif;color:#561a7e;animation-delay:.5s">Monitorar não é produzir relatórios. É decidir o que fazer a seguir.</p>
+</section>
+
+<section data-label="Legado" data-speaker-notes="O que fica na rede. Mensagem: fortalecemos capacidade, não criamos dependência." style="background:#38164e;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:44px;padding:0 120px;font-family:Manrope,sans-serif;color:#fff">
+  <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#24ccd8">O que fica para a rede</div>
+    <h2 data-anim="up" style="margin:0;font:600 64px/1.06 Poppins,sans-serif;letter-spacing:-.02em">Um programa que constrói legado</h2>
+  </div>
+  <div style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif">Mapa de Prioridades</div>
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif;animation-delay:.05s">Plano de Desenvolvimento</div>
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif;animation-delay:.1s">Professores formados</div>
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif;animation-delay:.15s">Comunidades de Prática</div>
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif;animation-delay:.2s">Referencial Pedagógico</div>
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif;animation-delay:.25s">Instrumentos de acompanhamento</div>
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif;animation-delay:.3s">Práticas sistematizadas</div>
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif;animation-delay:.35s">Dados organizados</div>
+    <div data-anim="pop" style="border:1px solid #7b5b96;padding:22px 26px;font:600 27px/1.25 Manrope,sans-serif;animation-delay:.4s">Capacidade técnica fortalecida</div>
+  </div>
+  <div data-anim="in" style="position:relative;display:flex;align-items:center;gap:26px;animation-delay:.5s">
+    <div style="font:700 52px/1.1 Poppins,sans-serif;color:#24ccd8;letter-spacing:-.01em">Autonomia + continuidade</div>
+    <div style="flex:1;height:2px;background:#7b5b96"></div>
+  </div>
+</section>
+
+<section data-label="Fechamento do ciclo" data-speaker-notes="Três entregas finais e a frase de encerramento do ciclo." style="background:#fff;display:flex;flex-direction:column;justify-content:center;gap:44px;padding:0 120px;font-family:Manrope,sans-serif;color:#38164e">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div data-anim="line" style="width:72px;height:6px;background:#24ccd8"></div>
+    <h2 data-anim="up" style="margin:0;font:600 60px/1.08 Poppins,sans-serif;letter-spacing:-.02em;max-width:1560px">O ciclo se fecha. O desenvolvimento continua.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div data-anim="up" style="background:#f7f3fb;padding:44px 36px;display:flex;flex-direction:column;gap:18px;min-height:400px;border-top:6px solid #24ccd8"><div style="font:600 36px/1.12 Poppins,sans-serif">Seminário Municipal de Práticas e Aprendizagem</div><div style="font:500 27px/1.4 Manrope,sans-serif;color:#4a3360">Professores e escolas compartilham experiências e resultados.</div></div>
+    <div data-anim="up" style="background:#f7f3fb;padding:44px 36px;display:flex;flex-direction:column;gap:18px;min-height:400px;border-top:6px solid #561a7e;animation-delay:.12s"><div style="font:600 36px/1.12 Poppins,sans-serif">Caderno Municipal de Práticas Pedagógicas</div><div style="font:500 27px/1.4 Manrope,sans-serif;color:#4a3360">Práticas e metodologias da própria rede são sistematizadas.</div></div>
+    <div data-anim="up" style="background:#38164e;color:#fff;padding:44px 36px;display:flex;flex-direction:column;gap:18px;min-height:400px;border-top:6px solid #24ccd8;animation-delay:.24s"><div style="font:600 36px/1.12 Poppins,sans-serif">Relatório de Desenvolvimento da Aprendizagem</div><div style="font:500 27px/1.4 Manrope,sans-serif;color:#e8dff2">Resultados, avanços, desafios e prioridades para o próximo ciclo.</div></div>
+  </div>
+  <p data-anim="in" style="margin:0;font:600 36px/1.26 Poppins,sans-serif;color:#561a7e;max-width:1560px;animation-delay:.36s">O que começa como formação transforma-se em conhecimento da própria rede.</p>
+</section>
+
+<section data-label="Encerramento" data-speaker-notes="Fechamento comercial. Sem excesso de informação." style="background:#f7f3fb;overflow:hidden;display:flex;align-items:center;padding:0 130px;font-family:Manrope,sans-serif;color:#38164e">
+  <div data-anim="ring" style="position:absolute;left:-560px;top:-170px;width:1420px;height:1420px;border-radius:50%;border:2px solid rgba(34,201,214,.8);pointer-events:none"></div>
+  <div data-anim="ring" style="position:absolute;left:-430px;top:-40px;width:1160px;height:1160px;border-radius:50%;border:2px solid rgba(34,201,214,.45);pointer-events:none;animation-delay:.15s"></div>
+  <div data-anim="ring" style="position:absolute;left:-300px;top:90px;width:900px;height:900px;border-radius:50%;border:2px solid rgba(34,201,214,.24);pointer-events:none;animation-delay:.3s"></div>
+  <div style="position:relative;margin-left:760px;width:1000px;display:flex;flex-direction:column;gap:36px">
+    <img data-anim="in" src="assets/ecoha-purple.png" alt="Ecoha" style="width:260px;height:auto;display:block" />
+    <h2 data-anim="up" style="margin:0;font:700 96px/1.02 Poppins,sans-serif;letter-spacing:-.03em;color:#38164e">VIVA <span style="color:#24ccd8">Letramento</span></h2>
+    <p data-anim="up" style="margin:0;font:500 34px/1.3 Manrope,sans-serif;color:#561a7e;animation-delay:.1s">Programa de Desenvolvimento da Linguagem e do Pensamento Matemático</p>
+    <div data-anim="line" style="width:160px;height:5px;background:#24ccd8"></div>
+    <div data-anim="up" style="display:flex;flex-direction:column;gap:12px;animation-delay:.24s">
+      <p style="margin:0;font:600 40px/1.24 Poppins,sans-serif;color:#38164e">Uma rede que aprende junto ensina melhor.</p>
+      <p style="margin:0;font:600 40px/1.24 Poppins,sans-serif;color:#0f9aa8">Uma rede que acompanha aprende a avançar.</p>
+    </div>
+    <div data-anim="in" style="font:700 24px/1 Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#38164e;margin-top:18px;animation-delay:.4s">Ecoha Educação e Inovação</div>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

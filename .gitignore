@@ -1,0 +1,12 @@
+# Material bruto de origem (CDR, PDFs, .docx, fontes): pesa ~54 MB e nenhum
+# slide usa esses arquivos. Fica só no computador, fora do repositório.
+uploads/
+
+# Miniaturas e arquivos temporários do editor
+.thumbnail
+
+# Lixo do Windows
+Thumbs.db
+desktop.ini
+
+node_modules/

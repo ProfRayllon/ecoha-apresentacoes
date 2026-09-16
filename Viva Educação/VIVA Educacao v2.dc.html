@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #2a0f3b; }
+  a { color: #22c9d6; text-decoration: none; }
+  a:hover { color: #6fe0e9; }
+  @keyframes ecRise { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: none; } }
+  @keyframes ecFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes ecIn { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: none; } }
+  @keyframes ecZoom { from { opacity: 0; transform: scale(.88); } to { opacity: 1; transform: none; } }
+  @keyframes ecBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes ecRing { from { opacity: 0; transform: scale(.72); } to { opacity: 1; transform: none; } }
+  @keyframes ecSpot {
+    0% { opacity: 0; }
+    4% { opacity: .35; }
+    8%, 22% { opacity: 1; }
+    30%, 100% { opacity: .35; }
+  }
+  @keyframes ecLink { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+  @keyframes ecSpotLast { 0% { opacity: 0; } 30%, 100% { opacity: 1; } }
+  @keyframes ecRestore { from { opacity: .35; } to { opacity: 1; } }
+  @keyframes ecWord {
+    0% { opacity: 0; filter: blur(14px); transform: translateY(18px) scale(.96); letter-spacing: .06em; }
+    3% { opacity: .5; filter: blur(7px); }
+    6%, 20% { opacity: 1; filter: blur(0); transform: none; letter-spacing: -.035em; }
+    23%, 100% { opacity: 0; filter: blur(12px); transform: translateY(-14px) scale(1.02); }
+  }
+  @keyframes ecCaret { 0%, 45% { opacity: 1; } 50%, 95% { opacity: .15; } 100% { opacity: 1; } }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-deck-active] [data-anim="up"] { animation: ecRise .8s cubic-bezier(.16,.84,.24,1) both; animation-delay: var(--d, 0s); }
+    [data-deck-active] [data-anim="fade"] { animation: ecFade 1s ease both; animation-delay: var(--d, 0s); }
+    [data-deck-active] [data-anim="in"] { animation: ecIn .85s cubic-bezier(.16,.84,.24,1) both; animation-delay: var(--d, 0s); }
+    [data-deck-active] [data-anim="zoom"] { animation: ecZoom .9s cubic-bezier(.16,.84,.24,1) both; animation-delay: var(--d, 0s); }
+    [data-deck-active] [data-anim="bar"] { animation: ecBar .9s cubic-bezier(.16,.84,.24,1) both; transform-origin: left center; animation-delay: var(--d, 0s); }
+    [data-deck-active] [data-anim="ring"] { animation: ecRing 1.5s cubic-bezier(.16,.84,.24,1) both; animation-delay: var(--d, 0s); }
+    [data-deck-active] [data-anim="spot"] { animation: ecSpot 5.2s cubic-bezier(.4,0,.2,1) var(--d, 0s) both, ecRestore .7s ease 9.4s forwards; }
+    [data-deck-active] [data-anim="spotlast"] { animation: ecSpotLast 1.4s cubic-bezier(.4,0,.2,1) both; animation-delay: var(--d, 0s); }
+    [data-deck-active] [data-anim="word"] { animation: ecWord 13.2s cubic-bezier(.16,.84,.24,1) var(--d, 0s) infinite both; }
+    [data-deck-active] [data-anim="caret"] { animation: ecCaret 1.2s steps(1, end) infinite both; }
+    [data-deck-active] [data-anim="link"] { animation: ecLink 1s cubic-bezier(.16,.84,.24,1) both; animation-delay: var(--d, 0s); }
+  }
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Capa" data-speaker-notes="Do bem-estar individual à cultura coletiva." style="background:#38164e;font-family:'Montserrat',sans-serif;color:#fff;display:flex;align-items:center;padding:0 130px;overflow:hidden">
+  <div data-anim="ring" style="position:absolute;left:-540px;top:-160px;width:1400px;height:1400px;border-radius:50%;border:2px solid rgba(34,201,214,.85);pointer-events:none"></div>
+  <div data-anim="ring" style="--d:.15s;position:absolute;left:-420px;top:-40px;width:1160px;height:1160px;border-radius:50%;border:2px solid rgba(34,201,214,.55);pointer-events:none"></div>
+  <div data-anim="ring" style="--d:.3s;position:absolute;left:-300px;top:80px;width:920px;height:920px;border-radius:50%;border:2px solid rgba(34,201,214,.3);pointer-events:none"></div>
+  <div style="position:relative;margin-left:760px;width:1000px;display:flex;flex-direction:column;gap:40px">
+    <img data-anim="fade" src="assets/ecoha-logo-white.png" alt="ecoha" style="width:300px;height:auto;display:block" />
+    <div data-anim="up" style="--d:.15s;display:flex;flex-direction:column;gap:16px">
+      <div style="font-size:124px;line-height:.98;font-weight:700;letter-spacing:-.035em">VIVA <span style="color:#22c9d6">Educação</span></div>
+      <div style="font-size:38px;font-weight:400;color:rgba(255,255,255,.9)">Programa de Educação Positiva e Bem-Estar</div>
+    </div>
+    <div data-anim="bar" style="--d:.45s;width:200px;height:4px;background:#22c9d6"></div>
+    <div data-anim="up" style="--d:.55s;font-size:44px;font-weight:500;line-height:1.3;color:#9fe9f0;text-wrap:pretty">Do bem-estar individual à cultura coletiva.</div>
+  </div>
+</section>
+
+<section data-label="Por que falar sobre isso" data-speaker-notes="Três dados bastam. Este slide cria a necessidade." style="background:#f4f2f7;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:86px 110px;display:flex;flex-direction:column;gap:40px;overflow:hidden">
+  <div data-anim="ring" style="position:absolute;right:-380px;bottom:-420px;width:900px;height:900px;border-radius:50%;border:2px solid rgba(34,201,214,.35);pointer-events:none"></div>
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">Por que precisamos falar sobre isso?</div></div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px">
+    <div data-anim="up" style="--d:.2s;background:#fff;border-top:5px solid #38164e;border-radius:6px;padding:46px 38px;display:flex;flex-direction:column;gap:18px;box-shadow:0 26px 58px -36px rgba(42,15,59,.45)">
+      <div style="font-size:100px;line-height:1;font-weight:700;letter-spacing:-.04em;color:#38164e">1 em cada 7</div>
+      <div style="font-size:28px;line-height:1.4;color:#3f2b52">Adolescentes de 10 a 19 anos apresenta condição de saúde mental.</div>
+      <div style="margin-top:auto;font-size:24px;font-weight:600;color:#0f9aa8">OMS</div>
+    </div>
+    <div data-anim="up" style="--d:.34s;background:#fff;border-top:5px solid #22c9d6;border-radius:6px;padding:46px 38px;display:flex;flex-direction:column;gap:18px;box-shadow:0 26px 58px -36px rgba(42,15,59,.45)">
+      <div style="font-size:100px;line-height:1;font-weight:700;letter-spacing:-.04em;color:#0f9aa8">21%</div>
+      <div style="font-size:28px;line-height:1.4;color:#3f2b52">Dos professores brasileiros relatam muito estresse no trabalho.</div>
+      <div style="margin-top:auto;font-size:24px;font-weight:600;color:#0f9aa8">OCDE — TALIS 2024</div>
+    </div>
+    <div data-anim="up" style="--d:.48s;background:#fff;border-top:5px solid #38164e;border-radius:6px;padding:46px 38px;display:flex;flex-direction:column;gap:18px;box-shadow:0 26px 58px -36px rgba(42,15,59,.45)">
+      <div style="font-size:100px;line-height:1;font-weight:700;letter-spacing:-.04em;color:#38164e">28,9%</div>
+      <div style="font-size:28px;line-height:1.4;color:#3f2b52">Dos estudantes brasileiros de 13 a 17 anos relatam sentir tristeza na maior parte do tempo.</div>
+      <div style="margin-top:auto;font-size:24px;font-weight:600;color:#0f9aa8">PeNSE 2024 / UNICEF</div>
+    </div>
+  </div>
+  <div data-anim="up" style="--d:.66s;font-size:52px;font-weight:600;line-height:1.2;letter-spacing:-.02em;max-width:1500px;text-wrap:pretty">Cuidar do bem-estar tornou-se parte do desafio de educar.</div>
+  <div data-anim="fade" style="--d:.85s;margin-top:auto;border-left:4px solid #22c9d6;padding-left:30px;font-size:30px;line-height:1.45;color:#3f2b52;max-width:1400px;text-wrap:pretty">Esperar o problema aparecer para começar a cuidar custa mais — às pessoas, às escolas e à própria rede.</div>
+</section>
+
+<section data-label="O desafio das redes" data-speaker-notes="Mapa de desafios que as redes vivem hoje." style="background:#f4f2f7;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:86px 110px;display:flex;flex-direction:column;gap:44px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">O desafio das redes</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:64px;font-weight:700;line-height:1.12;letter-spacing:-.03em;max-width:1400px;text-wrap:pretty">Sete frentes que aparecem, ao mesmo tempo, no cotidiano escolar</div>
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;flex:1">
+    <div data-anim="up" style="--d:.24s;background:#fff;border-radius:6px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:0 20px 46px -34px rgba(42,15,59,.5)"><div style="font-size:24px;font-weight:700;color:#22c9d6">01</div><div style="font-size:32px;font-weight:600;line-height:1.2">Estresse e sobrecarga</div></div>
+    <div data-anim="up" style="--d:.3s;background:#fff;border-radius:6px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:0 20px 46px -34px rgba(42,15,59,.5)"><div style="font-size:24px;font-weight:700;color:#22c9d6">02</div><div style="font-size:32px;font-weight:600;line-height:1.2">Desafios socioemocionais</div></div>
+    <div data-anim="up" style="--d:.36s;background:#fff;border-radius:6px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:0 20px 46px -34px rgba(42,15,59,.5)"><div style="font-size:24px;font-weight:700;color:#22c9d6">03</div><div style="font-size:32px;font-weight:600;line-height:1.2">Conflitos e relações</div></div>
+    <div data-anim="up" style="--d:.42s;background:#fff;border-radius:6px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:0 20px 46px -34px rgba(42,15,59,.5)"><div style="font-size:24px;font-weight:700;color:#22c9d6">04</div><div style="font-size:32px;font-weight:600;line-height:1.2">Pertencimento</div></div>
+    <div data-anim="up" style="--d:.48s;background:#fff;border-radius:6px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:0 20px 46px -34px rgba(42,15,59,.5)"><div style="font-size:24px;font-weight:700;color:#22c9d6">05</div><div style="font-size:32px;font-weight:600;line-height:1.2">Saúde mental</div></div>
+    <div data-anim="up" style="--d:.54s;background:#fff;border-radius:6px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:0 20px 46px -34px rgba(42,15,59,.5)"><div style="font-size:24px;font-weight:700;color:#22c9d6">06</div><div style="font-size:32px;font-weight:600;line-height:1.2">Integração família-escola</div></div>
+    <div data-anim="up" style="--d:.6s;background:#38164e;color:#fff;border-radius:6px;padding:34px 30px;display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:0 20px 46px -30px rgba(42,15,59,.7)"><div style="font-size:24px;font-weight:700;color:#22c9d6">07</div><div style="font-size:32px;font-weight:600;line-height:1.2">Necessidade de dados</div></div>
+    <div data-anim="fade" style="--d:.75s;border:1px dashed rgba(90,42,134,.4);border-radius:6px;padding:34px 30px;display:flex;align-items:center;font-size:28px;line-height:1.4;color:#3f2b52">Desafios simultâneos exigem uma resposta estruturada, não ações isoladas.</div>
+  </div>
+</section>
+
+<section data-label="Mudar a lógica" data-speaker-notes="De ações isoladas para cultura de cuidado." style="background:#38164e;font-family:'Montserrat',sans-serif;color:#fff;padding:86px 110px;display:flex;flex-direction:column;gap:46px;overflow:hidden">
+  <div data-anim="ring" style="position:absolute;left:-420px;top:-300px;width:1000px;height:1000px;border-radius:50%;border:2px solid rgba(34,201,214,.3);pointer-events:none"></div>
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#22c9d6">Precisamos mudar a lógica</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:70px;font-weight:700;line-height:1.1;letter-spacing:-.03em">Da reação pontual à cultura de cuidado</div>
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:48px;align-items:stretch;flex:1">
+    <div data-anim="up" style="--d:.3s;background:rgba(255,255,255,.07);border-radius:6px;padding:48px 42px;display:flex;flex-direction:column;gap:28px">
+      <div style="font-size:26px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6)">De</div>
+      <div style="display:flex;flex-direction:column;gap:20px;font-size:38px;font-weight:500;color:rgba(255,255,255,.9)">
+        <div>Ações isoladas</div><div>Respostas reativas</div><div>Iniciativas pontuais</div>
+      </div>
+    </div>
+    <div data-anim="fade" style="--d:.45s;display:flex;align-items:center;font-size:56px;color:#22c9d6">→</div>
+    <div data-anim="up" style="--d:.55s;background:#22c9d6;color:#12333a;border-radius:6px;padding:48px 42px;display:flex;flex-direction:column;gap:28px;box-shadow:0 34px 70px -34px rgba(0,0,0,.6)">
+      <div style="font-size:26px;letter-spacing:.18em;text-transform:uppercase;font-weight:700">Para</div>
+      <div style="display:flex;flex-direction:column;gap:20px;font-size:38px;font-weight:600">
+        <div>Promoção</div><div>Prevenção</div><div>Desenvolvimento</div><div>Cultura de cuidado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Programa integrado" data-speaker-notes="Quatro frentes de promoção, uma só estratégia." style="background:radial-gradient(110% 80% at 50% 42%,#ffffff 0%,#ffffff 62%,#f4f2f7 100%);font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:86px 120px;display:flex;flex-direction:column;align-items:center;gap:40px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">O que é o VIVA Educação?</div></div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;flex:1;width:100%">
+    <div data-anim="up" style="--d:.12s;max-width:1480px;text-align:center;font-size:86px;font-weight:600;line-height:1.06;letter-spacing:-.03em;color:#38164e;text-wrap:balance">Programa integrado para promover</div>
+    <div style="position:relative;width:100%;max-width:1560px;height:238px">
+      <div data-anim="word" style="--d:0s;position:absolute;left:0;top:0;width:100%;text-align:center;font-size:104px;font-weight:700;line-height:1.04;letter-spacing:-.035em;color:#0e7b86;text-wrap:balance">bem-estar</div>
+      <div data-anim="word" style="--d:3.3s;position:absolute;left:0;top:0;width:100%;text-align:center;font-size:104px;font-weight:700;line-height:1.04;letter-spacing:-.035em;color:#0e7b86;text-wrap:balance">desenvolvimento socioemocional</div>
+      <div data-anim="word" style="--d:6.6s;position:absolute;left:0;top:0;width:100%;text-align:center;font-size:104px;font-weight:700;line-height:1.04;letter-spacing:-.035em;color:#0e7b86;text-wrap:balance">relações positivas</div>
+      <div data-anim="word" style="--d:9.9s;position:absolute;left:0;top:0;width:100%;text-align:center;font-size:104px;font-weight:700;line-height:1.04;letter-spacing:-.035em;color:#0e7b86;text-wrap:balance">ambientes saudáveis</div>
+      <div data-anim="caret" style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:200px;height:4px;border-radius:2px;background:#22c9d6"></div>
+    </div>
+    <div data-anim="fade" style="--d:.7s;display:flex;align-items:center;gap:22px;font-size:30px;font-weight:500;color:#5a2a86">
+      <span style="width:52px;height:1px;background:rgba(34,201,214,.7)"></span>
+      <span>Estudantes, profissionais, gestores, famílias e comunidade.</span>
+      <span style="width:52px;height:1px;background:rgba(34,201,214,.7)"></span>
+    </div>
+  </div>
+</section>
+
+<section data-label="O que é o VIVA" data-speaker-notes="O ecossistema VIVA: quatro pilares no centro, cinco públicos conectados ao redor." style="background:radial-gradient(90% 70% at 18% 62%,rgba(90,42,134,.07),rgba(255,255,255,0) 60%),radial-gradient(70% 60% at 92% 12%,rgba(34,201,214,.09),rgba(255,255,255,0) 62%),#fbfafd;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:48px 96px 36px;display:flex;flex-direction:column;gap:6px;overflow:hidden">
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div data-anim="in" style="display:flex;align-items:center;gap:18px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">O ecossistema VIVA</div></div>
+    <div data-anim="up" style="--d:.08s;font-size:64px;font-weight:700;line-height:1.02;letter-spacing:-.03em;color:#38164e">O que é o VIVA Educação?</div>
+  </div>
+  <div style="position:relative;flex:1;display:flex;align-items:center;justify-content:center">
+    <div data-anim="ring" style="--d:.12s;position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(34,201,214,.1),rgba(90,42,134,.04) 58%,rgba(255,255,255,0) 72%);pointer-events:none"></div>
+    <div data-anim="ring" style="--d:.16s;position:absolute;width:560px;height:560px;border-radius:50%;border:1px solid rgba(90,42,134,.08);pointer-events:none"></div>
+    <div data-anim="zoom" style="--d:.2s;position:absolute;width:520px;height:520px;border-radius:50%;background:conic-gradient(from 45deg,#2456d8 0deg 87deg,#ffffff 87deg 93deg,#0e8489 93deg 177deg,#ffffff 177deg 183deg,#8b3fd1 183deg 267deg,#ffffff 267deg 273deg,#5b2b8a 273deg 357deg,#ffffff 357deg 360deg);box-shadow:0 34px 80px -40px rgba(42,15,59,.5);pointer-events:none"></div>
+    <div data-anim="zoom" style="--d:.2s;position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 36% 24%,rgba(255,255,255,.16),rgba(255,255,255,0) 60%);pointer-events:none"></div>
+    <div style="position:absolute;width:190px;left:calc(50% + 0px);top:calc(50% + -168px);transform:translate(-50%,-50%);pointer-events:none"><div data-anim="zoom" style="--d:.5s;display:flex;flex-direction:column;align-items:center;gap:6px">
+      <div style="display:flex;opacity:.95"><svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5a3.5 3.5 0 0 0-3.5 3.5v.4A3 3 0 0 0 7 11a3 3 0 0 0 1.5 2.6V15a3.5 3.5 0 0 0 3.5 3.5z" /><path d="M12 4.5A3.5 3.5 0 0 1 15.5 8v.4A3 3 0 0 1 17 11a3 3 0 0 1-1.5 2.6V15a3.5 3.5 0 0 1-3.5 3.5z" /><path d="M12 4.5v14" /></svg></div>
+      <div style="text-align:center;font-size:25px;font-weight:600;line-height:1.14;color:#fff">Desenvolvimento socioemocional</div>
+    </div></div>
+    <div style="position:absolute;width:140px;left:calc(50% + 190px);top:calc(50% + 0px);transform:translate(-50%,-50%);pointer-events:none"><div data-anim="zoom" style="--d:.75s;display:flex;flex-direction:column;align-items:center;gap:6px">
+      <div style="display:flex;opacity:.95"><svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z" /><path d="M8.5 11.6h2l1-1.8 1.4 3 1-1.2h1.6" /></svg></div>
+      <div style="text-align:center;font-size:25px;font-weight:600;line-height:1.14;color:#fff;white-space:nowrap">Bem-estar</div>
+    </div></div>
+    <div style="position:absolute;width:180px;left:calc(50% + 0px);top:calc(50% + 168px);transform:translate(-50%,-50%);pointer-events:none"><div data-anim="zoom" style="--d:1s;display:flex;flex-direction:column;align-items:center;gap:6px">
+      <div style="display:flex;opacity:.95"><svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.2 12 5l8 6.2" /><path d="M6 10.4V19h12v-8.6" /><path d="M12 19v-4.4" /><path d="M12 14.6c-1.5 0-2.4-.9-2.4-2.3 1.6 0 2.4.8 2.4 2.3z" /><path d="M12 14.6c1.5 0 2.4-.9 2.4-2.3-1.6 0-2.4.8-2.4 2.3z" /></svg></div>
+      <div style="text-align:center;font-size:25px;font-weight:600;line-height:1.14;color:#fff">Ambientes saudáveis</div>
+    </div></div>
+    <div style="position:absolute;width:126px;left:calc(50% + -188px);top:calc(50% + 0px);transform:translate(-50%,-50%);pointer-events:none"><div data-anim="zoom" style="--d:1.25s;display:flex;flex-direction:column;align-items:center;gap:6px">
+      <div style="display:flex;opacity:.95"><svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="2.6" /><circle cx="16" cy="9.5" r="2.2" /><path d="M4.5 18.5v-1.2A3.8 3.8 0 0 1 8.3 13.5h1.4a3.8 3.8 0 0 1 3.8 3.8v1.2" /><path d="M15 13.6h1a3.4 3.4 0 0 1 3.4 3.4v1.5" /></svg></div>
+      <div style="text-align:center;font-size:25px;font-weight:600;line-height:1.14;color:#fff">Relações positivas</div>
+    </div></div>
+    <div data-anim="zoom" style="--d:.34s;position:absolute;width:212px;height:212px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;box-shadow:0 14px 36px -14px rgba(42,15,59,.45);pointer-events:none">
+      <div style="font-size:38px;font-weight:800;letter-spacing:-.01em;color:#22c9d6;line-height:1">VIVA</div>
+      <div style="font-size:30px;font-weight:700;color:#38164e;line-height:1">Educação</div>
+      <div style="width:56px;height:3px;border-radius:2px;background:#22c9d6;margin-top:6px"></div>
+    </div>
+    <div data-anim="ring" style="--d:1.45s;position:absolute;width:890px;height:720px;border-radius:50%;border:2px solid rgba(34,201,214,.6);pointer-events:none"></div>
+    <div data-anim="fade" style="--d:1.95s;position:absolute;left:calc(50% + 262px);top:calc(50% + -291px);transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#22c9d6;box-shadow:0 0 0 6px rgba(34,201,214,.14);pointer-events:none"></div>
+    <div data-anim="fade" style="--d:2.0s;position:absolute;left:calc(50% + 423px);top:calc(50% + 111px);transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#22c9d6;box-shadow:0 0 0 6px rgba(34,201,214,.14);pointer-events:none"></div>
+    <div data-anim="fade" style="--d:2.05s;position:absolute;left:calc(50% + 0px);top:calc(50% + 360px);transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#22c9d6;box-shadow:0 0 0 6px rgba(34,201,214,.14);pointer-events:none"></div>
+    <div data-anim="fade" style="--d:2.1s;position:absolute;left:calc(50% + -423px);top:calc(50% + 111px);transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#22c9d6;box-shadow:0 0 0 6px rgba(34,201,214,.14);pointer-events:none"></div>
+    <div data-anim="fade" style="--d:2.15s;position:absolute;left:calc(50% + -262px);top:calc(50% + -291px);transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#22c9d6;box-shadow:0 0 0 6px rgba(34,201,214,.14);pointer-events:none"></div>
+    <div style="position:absolute;left:calc(50% + 0px);top:calc(50% + -360px);transform:translate(-50%,-50%);width:168px;height:168px"><div data-anim="zoom" style="--d:1.65s;position:relative;width:168px;height:168px;border-radius:50%;padding:8px;background:#fff;border:2px solid rgba(34,201,214,.5);box-shadow:0 20px 44px -20px rgba(42,15,59,.4);box-sizing:border-box">
+      <image-slot id="viva-publico-estudantes" shape="circle" style="width:148px;height:148px" placeholder="Avatar Estudantes"></image-slot>
+      <div style="position:absolute;top:calc(100% - 26px);left:50%;transform:translateX(-50%);background:#fff;border-radius:100px;padding:10px 26px;font-size:27px;font-weight:700;color:#38164e;white-space:nowrap;box-shadow:0 14px 30px -18px rgba(42,15,59,.45)">Estudantes</div>
+    </div></div>
+    <div style="position:absolute;left:calc(50% + 423px);top:calc(50% + -111px);transform:translate(-50%,-50%);width:168px;height:168px"><div data-anim="zoom" style="--d:1.8s;position:relative;width:168px;height:168px;border-radius:50%;padding:8px;background:#fff;border:2px solid rgba(34,201,214,.5);box-shadow:0 20px 44px -20px rgba(42,15,59,.4);box-sizing:border-box">
+      <image-slot id="viva-publico-profissionais" shape="circle" style="width:148px;height:148px" placeholder="Avatar Profissionais"></image-slot>
+      <div style="position:absolute;top:calc(100% - 26px);left:50%;transform:translateX(-50%);background:#fff;border-radius:100px;padding:10px 26px;font-size:27px;font-weight:700;color:#38164e;white-space:nowrap;box-shadow:0 14px 30px -18px rgba(42,15,59,.45)">Profissionais</div>
+    </div></div>
+    <div style="position:absolute;left:calc(50% + 262px);top:calc(50% + 291px);transform:translate(-50%,-50%);width:168px;height:168px"><div data-anim="zoom" style="--d:1.95s;position:relative;width:168px;height:168px;border-radius:50%;padding:8px;background:#fff;border:2px solid rgba(34,201,214,.5);box-shadow:0 20px 44px -20px rgba(42,15,59,.4);box-sizing:border-box">
+      <image-slot id="viva-publico-gestores" shape="circle" style="width:148px;height:148px" placeholder="Avatar Gestores"></image-slot>
+      <div style="position:absolute;top:calc(100% - 26px);left:50%;transform:translateX(-50%);background:#fff;border-radius:100px;padding:10px 26px;font-size:27px;font-weight:700;color:#38164e;white-space:nowrap;box-shadow:0 14px 30px -18px rgba(42,15,59,.45)">Gestores</div>
+    </div></div>
+    <div style="position:absolute;left:calc(50% + -262px);top:calc(50% + 291px);transform:translate(-50%,-50%);width:168px;height:168px"><div data-anim="zoom" style="--d:2.1s;position:relative;width:168px;height:168px;border-radius:50%;padding:8px;background:#fff;border:2px solid rgba(34,201,214,.5);box-shadow:0 20px 44px -20px rgba(42,15,59,.4);box-sizing:border-box">
+      <image-slot id="viva-publico-familias" shape="circle" style="width:148px;height:148px" placeholder="Avatar Famílias"></image-slot>
+      <div style="position:absolute;top:calc(100% - 26px);left:50%;transform:translateX(-50%);background:#fff;border-radius:100px;padding:10px 26px;font-size:27px;font-weight:700;color:#38164e;white-space:nowrap;box-shadow:0 14px 30px -18px rgba(42,15,59,.45)">Famílias</div>
+    </div></div>
+    <div style="position:absolute;left:calc(50% + -423px);top:calc(50% + -111px);transform:translate(-50%,-50%);width:168px;height:168px"><div data-anim="zoom" style="--d:2.25s;position:relative;width:168px;height:168px;border-radius:50%;padding:8px;background:#fff;border:2px solid rgba(34,201,214,.5);box-shadow:0 20px 44px -20px rgba(42,15,59,.4);box-sizing:border-box">
+      <image-slot id="viva-publico-comunidade" shape="circle" style="width:148px;height:148px" placeholder="Avatar Comunidade"></image-slot>
+      <div style="position:absolute;top:calc(100% - 26px);left:50%;transform:translateX(-50%);background:#fff;border-radius:100px;padding:10px 26px;font-size:27px;font-weight:700;color:#38164e;white-space:nowrap;box-shadow:0 14px 30px -18px rgba(42,15,59,.45)">Comunidade</div>
+    </div></div>
+  </div>
+</section>
+
+<section data-label="Nossa base" data-speaker-notes="Psicologia Positiva aplicada à Educação. PERMA é uma das referências." style="background:#38164e;font-family:'Montserrat',sans-serif;color:#fff;padding:86px 110px;display:flex;flex-direction:column;gap:40px;overflow:hidden">
+  <div data-anim="ring" style="position:absolute;right:-380px;top:-260px;width:1000px;height:1000px;border-radius:50%;border:2px solid rgba(34,201,214,.28);pointer-events:none"></div>
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#22c9d6">Nossa base</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:76px;font-weight:700;line-height:1.05;letter-spacing:-.03em">Educação Positiva</div>
+  <div data-anim="up" style="--d:.2s;font-size:34px;font-weight:400;line-height:1.4;color:rgba(255,255,255,.9);max-width:1400px;text-wrap:pretty">Psicologia Positiva aplicada à Educação.</div>
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;flex:1">
+    <div data-anim="up" style="--d:.3s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:38px 32px;display:flex;flex-direction:column;justify-content:center;gap:14px"><div style="font-size:34px;font-weight:700">PERMA</div><div style="font-size:27px;line-height:1.4;color:rgba(255,255,255,.85)">Uma das referências conceituais do programa.</div></div>
+    <div data-anim="up" style="--d:.4s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:38px 32px;display:flex;flex-direction:column;justify-content:center;gap:14px"><div style="font-size:34px;font-weight:700">Desenvolvimento socioemocional</div><div style="font-size:27px;line-height:1.4;color:rgba(255,255,255,.85)">Competências para aprender, conviver e decidir.</div></div>
+    <div data-anim="up" style="--d:.5s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:38px 32px;display:flex;flex-direction:column;justify-content:center;gap:14px"><div style="font-size:34px;font-weight:700">Promoção da saúde</div><div style="font-size:27px;line-height:1.4;color:rgba(255,255,255,.85)">Prevenção e cuidado antes do agravamento.</div></div>
+    <div data-anim="up" style="--d:.6s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:38px 32px;display:flex;flex-direction:column;justify-content:center;gap:14px"><div style="font-size:34px;font-weight:700">Clima escolar</div><div style="font-size:27px;line-height:1.4;color:rgba(255,255,255,.85)">Ambientes que sustentam aprendizagem e vínculo.</div></div>
+  </div>
+  <div data-anim="fade" style="--d:.78s;display:flex;align-items:center;gap:34px;font-size:46px;font-weight:600;color:#9fe9f0">
+    <span>Aprender bem.</span><span style="color:#22c9d6">·</span><span>Conviver bem.</span><span style="color:#22c9d6">·</span><span>Viver bem.</span>
+  </div>
+</section>
+
+<section data-label="6 Dimensões VIVA" data-speaker-notes="Principal elemento de identidade metodológica. O slide precisa ser memorável." style="background:#f4f2f7;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:76px 110px;display:flex;flex-direction:column;gap:34px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;justify-content:space-between;gap:30px">
+    <div style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">As 6 Dimensões VIVA</div></div>
+    <div style="font-size:24px;font-weight:600;color:#0f9aa8">6 Dimensões · 4 Espaços · 4 Movimentos · 2 Eixos · 1 Transformação</div>
+  </div>
+  <div data-anim="up" style="--d:.1s;font-size:58px;font-weight:700;line-height:1.12;letter-spacing:-.03em">Seis perguntas que orientam todo o programa</div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;flex:1">
+    <div data-anim="up" style="--d:.22s;background:#fff;border-left:5px solid #38164e;border-radius:6px;padding:38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px;box-shadow:0 22px 50px -36px rgba(42,15,59,.5)"><div style="font-size:38px;font-weight:700;color:#38164e">BEM-ESTAR</div><div style="font-size:29px;line-height:1.35;color:#3f2b52">Como estou e como cuido de mim?</div></div>
+    <div data-anim="up" style="--d:.3s;background:#fff;border-left:5px solid #22c9d6;border-radius:6px;padding:38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px;box-shadow:0 22px 50px -36px rgba(42,15,59,.5)"><div style="font-size:38px;font-weight:700;color:#0f9aa8">FORÇAS</div><div style="font-size:29px;line-height:1.35;color:#3f2b52">Como desenvolvo meu potencial?</div></div>
+    <div data-anim="up" style="--d:.38s;background:#fff;border-left:5px solid #38164e;border-radius:6px;padding:38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px;box-shadow:0 22px 50px -36px rgba(42,15,59,.5)"><div style="font-size:38px;font-weight:700;color:#38164e">RELAÇÕES</div><div style="font-size:29px;line-height:1.35;color:#3f2b52">Como convivemos?</div></div>
+    <div data-anim="up" style="--d:.46s;background:#fff;border-left:5px solid #22c9d6;border-radius:6px;padding:38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px;box-shadow:0 22px 50px -36px rgba(42,15,59,.5)"><div style="font-size:38px;font-weight:700;color:#0f9aa8">PROPÓSITO</div><div style="font-size:29px;line-height:1.35;color:#3f2b52">Por que aquilo que fazemos importa?</div></div>
+    <div data-anim="up" style="--d:.54s;background:#fff;border-left:5px solid #38164e;border-radius:6px;padding:38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px;box-shadow:0 22px 50px -36px rgba(42,15,59,.5)"><div style="font-size:38px;font-weight:700;color:#38164e">COMPETÊNCIAS</div><div style="font-size:29px;line-height:1.35;color:#3f2b52">Como enfrento desafios e faço escolhas?</div></div>
+    <div data-anim="up" style="--d:.62s;background:#38164e;border-left:5px solid #22c9d6;border-radius:6px;padding:38px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px;color:#fff;box-shadow:0 22px 50px -32px rgba(42,15,59,.7)"><div style="font-size:38px;font-weight:700;color:#22c9d6">CULTURA</div><div style="font-size:29px;line-height:1.35;color:rgba(255,255,255,.9)">Que comunidade estamos construindo?</div></div>
+  </div>
+</section>
+
+<section data-label="Da pessoa à comunidade" data-speaker-notes="Bem-estar não é responsabilidade apenas individual." style="background:#38164e;font-family:'Montserrat',sans-serif;color:#fff;padding:86px 110px;display:flex;flex-direction:column;gap:34px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#22c9d6">Da pessoa à comunidade</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:64px;font-weight:700;line-height:1.1;letter-spacing:-.03em;max-width:1300px;text-wrap:pretty">Bem-estar não é responsabilidade apenas individual.</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;flex:1">
+    <div style="position:relative;height:640px;display:flex;align-items:center;justify-content:center">
+      <div data-anim="ring" style="position:absolute;width:620px;height:620px;border-radius:50%;border:2px solid rgba(34,201,214,.25)"></div>
+      <div data-anim="ring" style="--d:.15s;position:absolute;width:460px;height:460px;border-radius:50%;border:2px solid rgba(34,201,214,.4)"></div>
+      <div data-anim="ring" style="--d:.3s;position:absolute;width:310px;height:310px;border-radius:50%;border:2px solid rgba(34,201,214,.6)"></div>
+      <div data-anim="zoom" style="--d:.45s;width:170px;height:170px;border-radius:50%;background:#22c9d6;color:#12333a;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700">EU</div>
+      <div data-anim="fade" style="--d:.6s;position:absolute;top:174px;left:50%;transform:translateX(-50%);font-size:26px;font-weight:600;color:#9fe9f0;white-space:nowrap">EU COM O OUTRO</div>
+      <div data-anim="fade" style="--d:.7s;position:absolute;top:100px;left:50%;transform:translateX(-50%);font-size:26px;font-weight:600;color:rgba(255,255,255,.85);white-space:nowrap">EU NO MUNDO</div>
+      <div data-anim="fade" style="--d:.8s;position:absolute;top:22px;left:50%;transform:translateX(-50%);font-size:30px;font-weight:700;color:#fff">NÓS</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div data-anim="up" style="--d:.4s;background:rgba(255,255,255,.08);border-radius:6px;padding:30px 34px;display:flex;align-items:center;gap:24px"><div style="font-size:36px;font-weight:700;color:#22c9d6;min-width:190px">EU</div><div style="font-size:29px;color:rgba(255,255,255,.9)">Como cuido de mim e reconheço o que sinto.</div></div>
+      <div data-anim="up" style="--d:.52s;background:rgba(255,255,255,.08);border-radius:6px;padding:30px 34px;display:flex;align-items:center;gap:24px"><div style="font-size:36px;font-weight:700;color:#22c9d6;min-width:190px">EU COM O OUTRO</div><div style="font-size:29px;color:rgba(255,255,255,.9)">Como convivo, escuto e construo vínculos.</div></div>
+      <div data-anim="up" style="--d:.64s;background:rgba(255,255,255,.08);border-radius:6px;padding:30px 34px;display:flex;align-items:center;gap:24px"><div style="font-size:36px;font-weight:700;color:#22c9d6;min-width:190px">EU NO MUNDO</div><div style="font-size:29px;color:rgba(255,255,255,.9)">Como faço escolhas e dou sentido ao que faço.</div></div>
+      <div data-anim="up" style="--d:.76s;background:#22c9d6;color:#12333a;border-radius:6px;padding:30px 34px;display:flex;align-items:center;gap:24px"><div style="font-size:36px;font-weight:700;min-width:190px">NÓS</div><div style="font-size:29px;font-weight:500">Que cultura construímos juntos.</div></div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Onde o VIVA acontece" data-speaker-notes="Quatro espaços de atuação." style="background:#f4f2f7;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:86px 110px;display:flex;flex-direction:column;gap:44px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">Onde o VIVA acontece?</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:64px;font-weight:700;line-height:1.1;letter-spacing:-.03em">Quatro espaços, um mesmo movimento</div>
+  <div style="display:flex;align-items:stretch;gap:20px;flex:1">
+    <div data-anim="up" style="--d:.24s;flex:1;background:#fff;border-top:5px solid #22c9d6;border-radius:6px;padding:42px 34px;display:flex;flex-direction:column;justify-content:center;gap:16px;box-shadow:0 22px 50px -36px rgba(42,15,59,.5)"><div style="font-size:38px;font-weight:700;color:#38164e">Sala de Aula</div><div style="font-size:29px;line-height:1.4;color:#3f2b52">Onde o socioemocional se articula ao currículo.</div></div>
+    <div data-anim="fade" style="--d:.34s;display:flex;align-items:center;font-size:44px;color:#22c9d6">→</div>
+    <div data-anim="up" style="--d:.38s;flex:1;background:#fff;border-top:5px solid #22c9d6;border-radius:6px;padding:42px 34px;display:flex;flex-direction:column;justify-content:center;gap:16px;box-shadow:0 22px 50px -36px rgba(42,15,59,.5)"><div style="font-size:38px;font-weight:700;color:#38164e">Escola</div><div style="font-size:29px;line-height:1.4;color:#3f2b52">Onde o clima, as relações e a cultura se constroem.</div></div>
+    <div data-anim="fade" style="--d:.48s;display:flex;align-items:center;font-size:44px;color:#22c9d6">→</div>
+    <div data-anim="up" style="--d:.52s;flex:1;background:#fff;border-top:5px solid #22c9d6;border-radius:6px;padding:42px 34px;display:flex;flex-direction:column;justify-content:center;gap:16px;box-shadow:0 22px 50px -36px rgba(42,15,59,.5)"><div style="font-size:38px;font-weight:700;color:#38164e">Família</div><div style="font-size:29px;line-height:1.4;color:#3f2b52">Onde o cuidado aprendido na escola continua.</div></div>
+    <div data-anim="fade" style="--d:.62s;display:flex;align-items:center;font-size:44px;color:#22c9d6">→</div>
+    <div data-anim="up" style="--d:.66s;flex:1;background:#38164e;color:#fff;border-top:5px solid #22c9d6;border-radius:6px;padding:42px 34px;display:flex;flex-direction:column;justify-content:center;gap:16px;box-shadow:0 22px 50px -32px rgba(42,15,59,.7)"><div style="font-size:38px;font-weight:700">Comunidade</div><div style="font-size:29px;line-height:1.4;color:rgba(255,255,255,.9)">Onde os estudantes levam o que construíram.</div></div>
+  </div>
+</section>
+
+<section data-label="Como funciona" data-speaker-notes="Metodologia, não pacote de palestras." style="background:#38164e;font-family:'Montserrat',sans-serif;color:#fff;padding:86px 110px;display:flex;flex-direction:column;gap:46px;overflow:hidden">
+  <div data-anim="ring" style="position:absolute;left:-400px;bottom:-420px;width:1000px;height:1000px;border-radius:50%;border:2px solid rgba(34,201,214,.3);pointer-events:none"></div>
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#22c9d6">Como funciona</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:76px;font-weight:700;line-height:1.05;letter-spacing:-.03em">METODOLOGIA VIVA</div>
+  <div style="display:flex;align-items:stretch;gap:22px;flex:1">
+    <div data-anim="up" style="--d:.26s;flex:1;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:42px 34px;display:flex;flex-direction:column;justify-content:center;gap:16px"><div style="font-size:30px;font-weight:700;color:#22c9d6">01</div><div style="font-size:42px;font-weight:700;letter-spacing:-.01em">DIAGNOSTICAR</div><div style="font-size:29px;font-weight:400;color:rgba(255,255,255,.88)">Conhecer a realidade.</div></div>
+    <div data-anim="fade" style="--d:.38s;display:flex;align-items:center;font-size:48px;color:#22c9d6">→</div>
+    <div data-anim="up" style="--d:.4s;flex:1;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:42px 34px;display:flex;flex-direction:column;justify-content:center;gap:16px"><div style="font-size:30px;font-weight:700;color:#22c9d6">02</div><div style="font-size:42px;font-weight:700;letter-spacing:-.01em">PLANEJAR</div><div style="font-size:29px;font-weight:400;color:rgba(255,255,255,.88)">Transformar dados em prioridades.</div></div>
+    <div data-anim="fade" style="--d:.52s;display:flex;align-items:center;font-size:48px;color:#22c9d6">→</div>
+    <div data-anim="up" style="--d:.54s;flex:1;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:42px 34px;display:flex;flex-direction:column;justify-content:center;gap:16px"><div style="font-size:30px;font-weight:700;color:#22c9d6">03</div><div style="font-size:42px;font-weight:700;letter-spacing:-.01em">AGIR</div><div style="font-size:29px;font-weight:400;color:rgba(255,255,255,.88)">Desenvolver pessoas e transformar práticas.</div></div>
+    <div data-anim="fade" style="--d:.66s;display:flex;align-items:center;font-size:48px;color:#22c9d6">→</div>
+    <div data-anim="up" style="--d:.68s;flex:1;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:42px 34px;display:flex;flex-direction:column;justify-content:center;gap:16px"><div style="font-size:30px;font-weight:700;color:#22c9d6">04</div><div style="font-size:42px;font-weight:700;letter-spacing:-.01em">MONITORAR</div><div style="font-size:29px;font-weight:400;color:rgba(255,255,255,.88)">Acompanhar resultados.</div></div>
+  </div>
+  <div data-anim="fade" style="--d:.85s;display:flex;align-items:center;gap:26px">
+    <div style="font-size:46px;color:#22c9d6">↻</div>
+    <div style="flex:1;height:1px;background:rgba(34,201,214,.4)"></div>
+    <div style="font-size:32px;font-weight:500;color:#9fe9f0">Um ciclo contínuo de desenvolvimento orientado por evidências.</div>
+  </div>
+</section>
+
+<section data-label="Começamos pelos dados" data-speaker-notes="Os quatro passos entram em destaque, um por vez." style="background:#f4f2f7;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:76px 100px;display:flex;flex-direction:column;gap:34px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">Começamos pelos dados</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:60px;font-weight:700;line-height:1.1;letter-spacing:-.03em;max-width:1500px;text-wrap:pretty">Cada rede tem uma realidade. O VIVA começa por ela.</div>
+  <div style="display:flex;align-items:stretch;gap:24px;flex:1">
+    <div style="position:relative;flex:1;display:flex">
+      <div data-anim="spot" style="--d:.3s;flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:56px 44px;border-radius:8px;background:#fff;border-top:6px solid #22c9d6;box-shadow:0 26px 60px -38px rgba(42,15,59,.5)">
+        <div style="font-size:30px;font-weight:700;color:#22c9d6">01</div>
+        <div style="font-size:44px;font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#38164e">Diagnóstico das 6 dimensões</div>
+        <div style="font-size:27px;line-height:1.4;color:#3f2b52">Escuta de estudantes, profissionais e famílias.</div>
+      </div>
+    </div>
+    <div style="position:relative;flex:1;display:flex">
+      <div data-anim="spot" style="--d:1.6s;flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:56px 44px;border-radius:8px;background:#fff;border-top:6px solid #22c9d6;box-shadow:0 26px 60px -38px rgba(42,15,59,.5)">
+        <div style="font-size:30px;font-weight:700;color:#22c9d6">02</div>
+        <div style="font-size:44px;font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#38164e">Linha de Base</div>
+        <div style="font-size:27px;line-height:1.4;color:#3f2b52">O ponto de partida de cada indicador.</div>
+      </div>
+    </div>
+    <div style="position:relative;flex:1;display:flex">
+      <div data-anim="spot" style="--d:2.9s;flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:56px 44px;border-radius:8px;background:#fff;border-top:6px solid #22c9d6;box-shadow:0 26px 60px -38px rgba(42,15,59,.5)">
+        <div style="font-size:30px;font-weight:700;color:#22c9d6">03</div>
+        <div style="font-size:44px;font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#38164e">Mapa de Prioridades</div>
+        <div style="font-size:27px;line-height:1.4;color:#3f2b52">Onde agir primeiro, com que intensidade.</div>
+      </div>
+    </div>
+    <div style="position:relative;flex:1;display:flex">
+      <div data-anim="spotlast" style="--d:4.2s;flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:56px 44px;border-radius:8px;background:#38164e;border-top:6px solid #22c9d6;box-shadow:0 26px 60px -38px rgba(42,15,59,.5)">
+        <div style="font-size:30px;font-weight:700;color:#22c9d6">04</div>
+        <div style="font-size:44px;font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#fff">Plano VIVA da Rede</div>
+        <div style="font-size:27px;line-height:1.4;color:rgba(255,255,255,.88)">Metas, ações e calendário acordados com a Secretaria.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Painel da rede" data-speaker-notes="Os quatro passos alimentam o painel: o sistema Ecoha consolida a leitura da rede." style="background:#f4f2f7;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:72px 100px;display:flex;flex-direction:column;gap:30px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">Do diagnóstico ao painel</div></div>
+  <div data-anim="up" style="--d:.08s;font-size:56px;font-weight:700;line-height:1.08;letter-spacing:-.03em;max-width:1500px;text-wrap:pretty">Os quatro passos alimentam um só painel</div>
+  <div style="display:grid;grid-template-columns:600px 1fr;gap:0 0;align-items:center;flex:1">
+    <div style="display:grid;grid-template-columns:1fr 72px;grid-template-rows:repeat(4,auto);gap:18px 0;align-items:stretch">
+      <div data-anim="in" style="--d:.2s;background:#fff;border-left:5px solid #22c9d6;border-radius:6px;padding:24px 28px;display:flex;align-items:center;gap:20px;box-shadow:0 18px 44px -34px rgba(42,15,59,.5)">
+        <div style="font-size:24px;font-weight:700;color:#22c9d6;min-width:40px">01</div>
+        <div style="font-size:28px;font-weight:600;line-height:1.2">Diagnóstico das 6 dimensões</div>
+      </div>
+      <div style="display:flex;align-items:center"><div data-anim="link" style="--d:.75s;width:100%;height:3px;background:linear-gradient(90deg,rgba(34,201,214,.2),#22c9d6);transform-origin:left center"></div></div>
+      <div data-anim="in" style="--d:.3s;background:#fff;border-left:5px solid #22c9d6;border-radius:6px;padding:24px 28px;display:flex;align-items:center;gap:20px;box-shadow:0 18px 44px -34px rgba(42,15,59,.5)">
+        <div style="font-size:24px;font-weight:700;color:#22c9d6;min-width:40px">02</div>
+        <div style="font-size:28px;font-weight:600;line-height:1.2">Linha de Base</div>
+      </div>
+      <div style="display:flex;align-items:center"><div data-anim="link" style="--d:.85s;width:100%;height:3px;background:linear-gradient(90deg,rgba(34,201,214,.2),#22c9d6);transform-origin:left center"></div></div>
+      <div data-anim="in" style="--d:.4s;background:#fff;border-left:5px solid #22c9d6;border-radius:6px;padding:24px 28px;display:flex;align-items:center;gap:20px;box-shadow:0 18px 44px -34px rgba(42,15,59,.5)">
+        <div style="font-size:24px;font-weight:700;color:#22c9d6;min-width:40px">03</div>
+        <div style="font-size:28px;font-weight:600;line-height:1.2">Mapa de Prioridades</div>
+      </div>
+      <div style="display:flex;align-items:center"><div data-anim="link" style="--d:.95s;width:100%;height:3px;background:linear-gradient(90deg,rgba(34,201,214,.2),#22c9d6);transform-origin:left center"></div></div>
+      <div data-anim="in" style="--d:.5s;background:#38164e;color:#fff;border-left:5px solid #22c9d6;border-radius:6px;padding:24px 28px;display:flex;align-items:center;gap:20px;box-shadow:0 18px 44px -34px rgba(42,15,59,.5)">
+        <div style="font-size:24px;font-weight:700;color:#22c9d6;min-width:40px">04</div>
+        <div style="font-size:28px;font-weight:600;line-height:1.2">Plano VIVA da Rede</div>
+      </div>
+      <div style="display:flex;align-items:center"><div data-anim="link" style="--d:1.05s;width:100%;height:3px;background:linear-gradient(90deg,rgba(34,201,214,.2),#22c9d6);transform-origin:left center"></div></div>
+    </div>
+    <div data-anim="zoom" style="--d:1.2s;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px">
+        <div style="font-size:28px;font-weight:700;color:#5a2a86">Painel diagnóstico da rede</div>
+        <div style="font-size:24px;font-weight:500;color:#7a6b8a">Sistema Ecoha</div>
+      </div>
+      <div style="border-radius:10px;padding:14px;background:#fff;border:1px solid rgba(90,42,134,.14);box-shadow:0 34px 76px -40px rgba(42,15,59,.55)">
+        <div style="border-radius:6px;overflow:hidden;background:#f4f2f7">
+          <image-slot id="viva-painel-sistema" shape="rect" style="width:100%;height:520px" placeholder="Foto/print do painel do sistema"></image-slot>
+        </div>
+      </div>
+      <div style="font-size:24px;color:#7a6b8a">Os indicadores reais são definidos no diagnóstico de cada rede.</div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Da estratégia à prática" data-speaker-notes="Metodologia estruturada, intervenções definidas com a rede." style="background:#38164e;font-family:'Montserrat',sans-serif;color:#fff;padding:82px 110px;display:flex;flex-direction:column;gap:34px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#22c9d6">Da estratégia para a prática</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:64px;font-weight:700;line-height:1.1;letter-spacing:-.03em">Dois eixos que sustentam o programa</div>
+  <div style="display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;flex:1">
+    <div data-anim="up" style="--d:.26s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:42px 38px;display:flex;flex-direction:column;gap:24px">
+      <div><div style="font-size:40px;font-weight:700;letter-spacing:.02em">FORMAÇÃO</div><div style="font-size:28px;font-weight:400;color:#9fe9f0">Desenvolver quem transforma a educação</div></div>
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:32px;font-weight:500">
+        <div style="display:flex;align-items:center;gap:16px"><span style="width:10px;height:10px;border-radius:50%;background:#22c9d6"></span>Gestores</div>
+        <div style="display:flex;align-items:center;gap:16px"><span style="width:10px;height:10px;border-radius:50%;background:#22c9d6"></span>Professores</div>
+        <div style="display:flex;align-items:center;gap:16px"><span style="width:10px;height:10px;border-radius:50%;background:#22c9d6"></span>Equipes escolares</div>
+        <div style="display:flex;align-items:center;gap:16px"><span style="width:10px;height:10px;border-radius:50%;background:#22c9d6"></span>Multiplicadores</div>
+      </div>
+    </div>
+    <div data-anim="up" style="--d:.42s;background:#fff;color:#2a0f3b;border-top:4px solid #22c9d6;border-radius:6px;padding:42px 38px;display:flex;flex-direction:column;gap:24px;box-shadow:0 34px 70px -40px rgba(0,0,0,.6)">
+      <div><div style="font-size:40px;font-weight:700;letter-spacing:.02em;color:#38164e">IMPLEMENTAÇÃO</div><div style="font-size:28px;font-weight:400;color:#5a2a86">Fazer a cultura acontecer</div></div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px">
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Campanhas</div>
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Workshops</div>
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Oficinas</div>
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Grupos de vivências</div>
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Projetos escolares</div>
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Atividades extraclasse</div>
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Experiências de bem-estar</div>
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Protagonismo estudantil</div>
+        <div style="background:#f4f2f7;border-radius:100px;padding:16px 30px;font-size:28px;font-weight:600">Família e comunidade</div>
+      </div>
+    </div>
+  </div>
+  <div data-anim="fade" style="--d:.7s;border-left:4px solid #22c9d6;padding-left:30px;font-size:32px;line-height:1.4;color:#e8e2f0;max-width:1560px;text-wrap:pretty">A metodologia é estruturada. As intervenções são definidas a partir das necessidades de cada rede.</div>
+</section>
+
+<section data-label="Além dos muros" data-speaker-notes="O VIVA começa na escola, mas não termina nela." style="background:#f4f2f7;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:76px 110px;display:flex;flex-direction:column;gap:30px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">Uma cultura que ultrapassa os muros da escola</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:60px;font-weight:700;line-height:1.1;letter-spacing:-.03em">Imagine uma rede em que...</div>
+  <div style="display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center;flex:1">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div data-anim="up" style="--d:.24s;border-top:1px solid rgba(90,42,134,.25);padding-top:14px;font-size:28px;line-height:1.35;color:#3f2b52;text-wrap:pretty">o professor aprende a cuidar de si enquanto aprende a cuidar de suas relações;</div>
+      <div data-anim="up" style="--d:.32s;border-top:1px solid rgba(90,42,134,.25);padding-top:14px;font-size:28px;line-height:1.35;color:#3f2b52;text-wrap:pretty">o estudante desenvolve recursos para compreender emoções, fazer escolhas e construir seu futuro;</div>
+      <div data-anim="up" style="--d:.4s;border-top:1px solid rgba(90,42,134,.25);padding-top:14px;font-size:28px;line-height:1.35;color:#3f2b52;text-wrap:pretty">a escola cria experiências que fortalecem vínculos e pertencimento;</div>
+      <div data-anim="up" style="--d:.48s;border-top:1px solid rgba(90,42,134,.25);padding-top:14px;font-size:28px;line-height:1.35;color:#3f2b52;text-wrap:pretty">as famílias participam desse processo;</div>
+      <div data-anim="up" style="--d:.56s;border-top:1px solid rgba(90,42,134,.25);padding-top:14px;font-size:28px;line-height:1.35;color:#3f2b52;text-wrap:pretty">os estudantes levam projetos para seu território;</div>
+      <div data-anim="up" style="--d:.64s;border-top:1px solid rgba(90,42,134,.25);padding-top:14px;font-size:28px;line-height:1.35;color:#3f2b52;text-wrap:pretty">Educação, Saúde e Assistência dialogam;</div>
+      <div data-anim="up" style="--d:.72s;border-top:1px solid rgba(90,42,134,.25);padding-top:14px;font-size:28px;line-height:1.35;color:#3f2b52;text-wrap:pretty">e a Secretaria consegue acompanhar tudo isso por meio de dados.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:34px;align-items:center">
+      <div style="position:relative;width:100%;height:520px;display:flex;align-items:center;justify-content:center">
+        <div data-anim="ring" style="position:absolute;width:500px;height:500px;border-radius:50%;border:2px solid rgba(34,201,214,.28)"></div>
+        <div data-anim="ring" style="--d:.15s;position:absolute;width:380px;height:380px;border-radius:50%;border:2px solid rgba(34,201,214,.42)"></div>
+        <div data-anim="ring" style="--d:.3s;position:absolute;width:262px;height:262px;border-radius:50%;border:2px solid rgba(34,201,214,.6)"></div>
+        <div data-anim="zoom" style="--d:.45s;width:180px;height:180px;border-radius:50%;background:#38164e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;box-shadow:0 24px 60px -26px rgba(42,15,59,.6)">ESCOLA</div>
+      </div>
+      <div data-anim="fade" style="--d:.8s;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;font-size:26px;font-weight:600;color:#38164e">
+        <span>PESSOAS</span><span style="color:#0f9aa8">→</span><span>RELAÇÕES</span><span style="color:#0f9aa8">→</span><span>ESCOLA</span><span style="color:#0f9aa8">→</span><span>FAMÍLIAS</span><span style="color:#0f9aa8">→</span><span>COMUNIDADE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Tecnologia e dados" data-speaker-notes="Plataforma VIVA e Dashboard: infraestrutura do programa." style="background:#38164e;font-family:'Montserrat',sans-serif;color:#fff;padding:64px 100px;display:flex;flex-direction:column;gap:24px;overflow:hidden">
+  <div data-anim="ring" style="position:absolute;right:-420px;bottom:-400px;width:1000px;height:1000px;border-radius:50%;border:2px solid rgba(34,201,214,.28);pointer-events:none"></div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:60px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#22c9d6">Tecnologia e dados</div></div>
+      <div data-anim="up" style="--d:.1s;font-size:60px;font-weight:700;line-height:1.05;letter-spacing:-.03em">Plataforma VIVA</div>
+    </div>
+    <div data-anim="up" style="--d:.3s;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px;max-width:1000px">
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:14px 28px;font-size:27px;font-weight:600">Aprender</div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:14px 28px;font-size:27px;font-weight:600">Praticar</div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:14px 28px;font-size:27px;font-weight:600">Compartilhar</div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:14px 28px;font-size:27px;font-weight:600">Orientar</div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:14px 28px;font-size:27px;font-weight:600">Acompanhar</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.62fr .38fr;gap:40px;align-items:end;flex:1">
+    <div data-anim="up" style="--d:.4s;display:flex;flex-direction:column;gap:16px">
+      <div style="font-size:26px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#22c9d6">Dashboard VIVA — visão da rede</div>
+      <div style="border-radius:12px;padding:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)">
+        <div style="border-radius:6px;overflow:hidden;background:#fff">
+          <image-slot id="viva-plataforma-desktop" shape="rect" style="width:100%;height:508px" placeholder="Tela do sistema (desktop)"></image-slot>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+        <div data-anim="up" style="--d:.62s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:8px"><div style="font-size:29px;font-weight:700;line-height:1.15">Indicadores diagnósticos</div><div style="font-size:25px;color:rgba(255,255,255,.85)">Onde a rede está.</div></div>
+        <div data-anim="up" style="--d:.72s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:8px"><div style="font-size:29px;font-weight:700;line-height:1.15">Processo</div><div style="font-size:25px;color:rgba(255,255,255,.85)">O que está sendo realizado.</div></div>
+        <div data-anim="up" style="--d:.82s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:8px"><div style="font-size:29px;font-weight:700;line-height:1.15">Resultados</div><div style="font-size:25px;color:rgba(255,255,255,.85)">O que mudou ao longo do tempo.</div></div>
+      </div>
+    </div>
+    <div data-anim="zoom" style="--d:.5s;display:flex;flex-direction:column;gap:16px;align-items:center">
+      <div style="font-size:26px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#22c9d6;align-self:flex-start">App VIVA</div>
+      <div style="width:330px;border-radius:44px;padding:16px;background:#1d0b2b;border:2px solid rgba(255,255,255,.22);box-shadow:0 40px 90px -40px rgba(0,0,0,.7)">
+        <div style="border-radius:32px;overflow:hidden;background:#fff">
+          <image-slot id="viva-plataforma-mobile" shape="rect" style="width:298px;height:634px" placeholder="Tela do app (celular)"></image-slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-label="Duas jornadas" data-speaker-notes="A duração aparece, mas não é a última informação percebida." style="background:#f4f2f7;font-family:'Montserrat',sans-serif;color:#2a0f3b;padding:86px 110px;display:flex;flex-direction:column;gap:40px;overflow:hidden">
+  <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#5a2a86">Jornada e transformação</div></div>
+  <div data-anim="up" style="--d:.1s;font-size:70px;font-weight:700;line-height:1.08;letter-spacing:-.03em">DUAS JORNADAS</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px;flex:1">
+    <div data-anim="up" style="--d:.26s;background:#fff;border-top:5px solid #22c9d6;border-radius:6px;padding:48px 42px;display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 56px -38px rgba(42,15,59,.5)">
+      <div style="font-size:32px;font-weight:700;letter-spacing:.14em;color:#0f9aa8">12 MESES</div>
+      <div style="font-size:58px;font-weight:700;letter-spacing:-.02em;color:#38164e">IMPLEMENTAR</div>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:29px;font-weight:500;color:#3f2b52"><span>Diagnosticar</span><span style="color:#22c9d6">•</span><span>Planejar</span><span style="color:#22c9d6">•</span><span>Desenvolver</span><span style="color:#22c9d6">•</span><span>Avaliar</span></div>
+    </div>
+    <div data-anim="up" style="--d:.42s;background:#38164e;color:#fff;border-top:5px solid #22c9d6;border-radius:6px;padding:48px 42px;display:flex;flex-direction:column;gap:20px;box-shadow:0 28px 60px -36px rgba(42,15,59,.7)">
+      <div style="font-size:32px;font-weight:700;letter-spacing:.14em;color:#22c9d6">24 MESES</div>
+      <div style="font-size:58px;font-weight:700;letter-spacing:-.02em">CONSOLIDAR</div>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:29px;font-weight:500;color:rgba(255,255,255,.9)"><span>Aprofundar</span><span style="color:#22c9d6">•</span><span>Ajustar</span><span style="color:#22c9d6">•</span><span>Ampliar</span><span style="color:#22c9d6">•</span><span>Institucionalizar</span></div>
+    </div>
+  </div>
+  <div data-anim="fade" style="--d:.62s;font-size:28px;font-weight:500;color:#5a2a86">Ciclos prorrogáveis.</div>
+</section>
+
+<section data-label="O que queremos transformar" data-speaker-notes="Fechamento: do bem-estar individual à cultura coletiva." style="background:#38164e;font-family:'Montserrat',sans-serif;color:#fff;padding:82px 110px;display:flex;flex-direction:column;gap:36px;overflow:hidden">
+  <div data-anim="ring" style="position:absolute;left:-520px;top:-220px;width:1300px;height:1300px;border-radius:50%;border:2px solid rgba(34,201,214,.5);pointer-events:none"></div>
+  <div data-anim="ring" style="--d:.15s;position:absolute;left:-400px;top:-100px;width:1060px;height:1060px;border-radius:50%;border:2px solid rgba(34,201,214,.3);pointer-events:none"></div>
+  <div style="position:relative;display:flex;flex-direction:column;gap:36px;margin-left:560px">
+    <div data-anim="in" style="display:flex;align-items:center;gap:20px"><div style="width:52px;height:3px;background:#22c9d6"></div><div style="font-size:24px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#22c9d6">O que queremos transformar?</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 40px">
+      <div data-anim="up" style="--d:.2s;border-top:1px solid rgba(255,255,255,.25);padding-top:14px;font-size:34px;font-weight:500">Pessoas mais preparadas.</div>
+      <div data-anim="up" style="--d:.28s;border-top:1px solid rgba(255,255,255,.25);padding-top:14px;font-size:34px;font-weight:500">Relações mais positivas.</div>
+      <div data-anim="up" style="--d:.36s;border-top:1px solid rgba(255,255,255,.25);padding-top:14px;font-size:34px;font-weight:500">Ambientes mais saudáveis.</div>
+      <div data-anim="up" style="--d:.44s;border-top:1px solid rgba(255,255,255,.25);padding-top:14px;font-size:34px;font-weight:500">Escolas mais acolhedoras.</div>
+      <div data-anim="up" style="--d:.52s;border-top:1px solid rgba(255,255,255,.25);padding-top:14px;font-size:34px;font-weight:500">Famílias mais participativas.</div>
+      <div data-anim="up" style="--d:.6s;border-top:1px solid rgba(255,255,255,.25);padding-top:14px;font-size:34px;font-weight:500">Comunidades mais conectadas.</div>
+    </div>
+    <div data-anim="fade" style="--d:.78s;margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:66px;font-weight:700;letter-spacing:-.03em">VIVA <span style="color:#22c9d6">Educação</span></div>
+      <div style="font-size:40px;font-weight:500;color:#9fe9f0;text-wrap:pretty">Do bem-estar individual à cultura coletiva.</div>
+      <img src="assets/ecoha-logo-white.png" alt="ecoha" style="width:220px;height:auto;margin-top:26px;display:block" />
+    </div>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

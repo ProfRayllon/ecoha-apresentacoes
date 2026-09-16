@@ -365,7 +365,7 @@
       </div>
       <div style="border-radius:10px;padding:14px;background:#fff;border:1px solid rgba(90,42,134,.14);box-shadow:0 34px 76px -40px rgba(42,15,59,.55)">
         <div style="border-radius:6px;overflow:hidden;background:#f4f2f7">
-          <image-slot id="viva-painel-sistema" shape="rect" style="width:100%;height:520px" placeholder="Foto/print do painel do sistema"></image-slot>
+          <image-slot id="viva-painel-sistema" shape="rect" fit="contain" style="width:100%;height:613px" placeholder="Foto/print do painel do sistema"></image-slot>
         </div>
       </div>
       <div style="font-size:24px;color:#7a6b8a">Os indicadores reais são definidos no diagnóstico de cada rede.</div>
@@ -446,27 +446,18 @@
         <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:14px 28px;font-size:27px;font-weight:600">Acompanhar</div>
     </div>
   </div>
-  <div style="display:grid;grid-template-columns:1.62fr .38fr;gap:40px;align-items:end;flex:1">
+  <div style="display:grid;grid-template-columns:1100px auto;justify-content:space-between;gap:56px;align-items:end;flex:1">
     <div data-anim="up" style="--d:.4s;display:flex;flex-direction:column;gap:16px">
       <div style="font-size:26px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#22c9d6">Dashboard VIVA — visão da rede</div>
       <div style="border-radius:12px;padding:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)">
         <div style="border-radius:6px;overflow:hidden;background:#fff">
-          <image-slot id="viva-plataforma-desktop" shape="rect" style="width:100%;height:508px" placeholder="Tela do sistema (desktop)"></image-slot>
+          <img src="img/comput.png" alt="Dashboard VIVA no computador" style="display:block;width:100%;height:620px;object-fit:cover;object-position:top left" />
         </div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
-        <div data-anim="up" style="--d:.62s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:8px"><div style="font-size:29px;font-weight:700;line-height:1.15">Indicadores diagnósticos</div><div style="font-size:25px;color:rgba(255,255,255,.85)">Onde a rede está.</div></div>
-        <div data-anim="up" style="--d:.72s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:8px"><div style="font-size:29px;font-weight:700;line-height:1.15">Processo</div><div style="font-size:25px;color:rgba(255,255,255,.85)">O que está sendo realizado.</div></div>
-        <div data-anim="up" style="--d:.82s;background:rgba(255,255,255,.08);border-top:4px solid #22c9d6;border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:8px"><div style="font-size:29px;font-weight:700;line-height:1.15">Resultados</div><div style="font-size:25px;color:rgba(255,255,255,.85)">O que mudou ao longo do tempo.</div></div>
       </div>
     </div>
-    <div data-anim="zoom" style="--d:.5s;display:flex;flex-direction:column;gap:16px;align-items:center">
+    <div data-anim="zoom" style="--d:.5s;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
       <div style="font-size:26px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#22c9d6;align-self:flex-start">App VIVA</div>
-      <div style="width:330px;border-radius:44px;padding:16px;background:#1d0b2b;border:2px solid rgba(255,255,255,.22);box-shadow:0 40px 90px -40px rgba(0,0,0,.7)">
-        <div style="border-radius:32px;overflow:hidden;background:#fff">
-          <image-slot id="viva-plataforma-mobile" shape="rect" style="width:298px;height:634px" placeholder="Tela do app (celular)"></image-slot>
-        </div>
-      </div>
+      <img src="img/celular.png" alt="App VIVA no celular" style="display:block;width:370px;height:auto;border:2px solid rgba(255,255,255,.32);border-radius:34px;background:#fff;box-shadow:0 40px 90px -40px rgba(0,0,0,.7)" />
     </div>
   </div>
 </section>

@@ -82,6 +82,8 @@ for (const ap of APRESENTACOES) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${ap.titulo}</title>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <!-- Gerado por gerar-apresentacoes.js a partir de "${ap.fonte}". Não edite aqui: edite o .dc.html e gere de novo. -->
 ${estado ? scriptImagens(estado) : ''}
 ${helmet}

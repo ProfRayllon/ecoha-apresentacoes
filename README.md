@@ -31,7 +31,7 @@ Viva Educação/
   VIVA Educacao v2.dc.html     Fonte, editada no Claude Design
   Apresentacao.html            Gerado — não editar
 VIVA Letramento/
-  VIVA Letramento - Apresentação Comercial v2.dc.html
+  VIVA Letramento - Apresentação Comercial v3.dc.html
   Apresentacao.html            Gerado — não editar
 ```
 

@@ -12,7 +12,7 @@ const SAIDA = 'Apresentacao.html';
 
 const APRESENTACOES = [
   { pasta: 'Viva Educação', fonte: 'VIVA Educacao v2.dc.html', titulo: 'VIVA Educação · ecoha' },
-  { pasta: 'VIVA Letramento', fonte: 'VIVA Letramento - Apresentação Comercial v2.dc.html', titulo: 'VIVA Letramento · ecoha' },
+  { pasta: 'VIVA Letramento', fonte: 'VIVA Letramento - Apresentação Comercial v3.dc.html', titulo: 'VIVA Letramento · ecoha' },
 ];
 
 function atributo(attrs, nome, padrao) {

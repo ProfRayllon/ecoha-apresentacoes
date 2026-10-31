@@ -28,7 +28,7 @@ Mexa o mouse para aparecer o botão **← Capa**.
 index.html                     Capa: escolhe qual apresentação rodar
 gerar-apresentacoes.js         Gera as versões de apresentação
 Viva Educação/
-  VIVA Educacao v2.dc.html     Fonte, editada no Claude Design
+  VIVA Educacao v3.dc.html     Fonte, editada no Claude Design
   Apresentacao.html            Gerado — não editar
 VIVA Letramento/
   VIVA Letramento - Apresentação Comercial v3.dc.html

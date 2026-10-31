@@ -74,7 +74,7 @@ for (const ap of APRESENTACOES) {
   const slides = deck[2].trim();
 
   const arquivoEstado = path.join(pasta, '.image-slots.state.json');
-  const estado = fs.existsSync(arquivoEstado) ? JSON.parse(fs.readFileSync(arquivoEstado, 'utf8')) : null;
+  const estado = fonte.includes('<image-slot') && fs.existsSync(arquivoEstado) ? JSON.parse(fs.readFileSync(arquivoEstado, 'utf8')) : null;
 
   const html = `<!DOCTYPE html>
 <html lang="pt-BR">

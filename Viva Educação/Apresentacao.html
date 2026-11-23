@@ -434,24 +434,74 @@
   <div class="rodape"><span>VIVA Educação</span><span>10</span></div>
 </section>
 
-<section data-label="Começamos pelos dados" class="s light tr-rise" data-speaker-notes="O diagnóstico combina dados quantitativos, escuta qualitativa e informações da própria rede. O painel é um exemplo didático: os indicadores reais são definidos no diagnóstico." style="padding-top:60px;padding-bottom:92px;gap:24px">
+<section data-label="Começamos pelos dados" class="s light tr-rise" data-speaker-notes="O diagnóstico combina dados quantitativos, escuta qualitativa e informações da própria rede. As cores das barras indicam em que grupo do Mapa de Prioridades cada dimensão caiu. O painel é um exemplo didático: os indicadores reais são definidos no diagnóstico." style="padding-top:56px;padding-bottom:92px;gap:22px">
   <div class="kick" data-anim="in">Começamos pelos dados</div>
   <div class="h" data-anim="up" style="--d:.1s;font-size:58px">Cada rede tem uma realidade. O VIVA começa por ela.</div>
-  <div style="display:grid;grid-template-columns:580px 1fr;gap:40px;flex:1;min-height:0">
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div class="pas" data-anim="in" style="--d:.2s"><i>01</i><div><b>Diagnóstico das 6 dimensões</b><span>Dados, escuta e informações da rede.</span></div></div>
-      <div class="pas" data-anim="in" style="--d:.35s"><i>02</i><div><b>Linha de Base</b><span>A fotografia inicial dos indicadores.</span></div></div>
-      <div class="pas" data-anim="in" style="--d:.5s"><i>03</i><div><b>Mapa de Prioridades</b><span>O que demanda atenção e o que fortalecer.</span></div></div>
-      <div class="pas" data-anim="in" style="--d:.65s;background:#38164e;color:#fff"><i>04</i><div><b>Plano VIVA da Rede</b><span style="color:rgba(255,255,255,.88)">Metas, ações, responsabilidades e cronograma.</span></div></div>
-    </div>
-    <div class="painel" data-anim="zoom" style="--d:.75s">
-      <div class="painel-t"><b>Painel diagnóstico da rede</b><span>Exemplo ilustrativo</span></div>
-      <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:18px;flex:1;min-height:0">
-        <div class="pc"><h4>Linha de Base por dimensão</h4><div class="bls"><div class="bl"><span>Bem-estar</span><div class="bt"><div data-anim="bar" style="--d:0.90s;width:72%;background:#38164e"></div></div></div><div class="bl"><span>Forças</span><div class="bt"><div data-anim="bar" style="--d:0.98s;width:65%;background:#5a2a86"></div></div></div><div class="bl"><span>Relações</span><div class="bt"><div data-anim="bar" style="--d:1.06s;width:48%;background:#8a5cc0"></div></div></div><div class="bl"><span>Propósito</span><div class="bt"><div data-anim="bar" style="--d:1.14s;width:70%;background:#22c9d6"></div></div></div><div class="bl"><span>Competências</span><div class="bt"><div data-anim="bar" style="--d:1.22s;width:62%;background:#0f9aa8"></div></div></div><div class="bl"><span>Cultura</span><div class="bt"><div data-anim="bar" style="--d:1.30s;width:54%;background:#0e7b86"></div></div></div></div></div>
-        <div class="pc"><h4>Mapa de Prioridades</h4>
-          <div class="pri" style="background:#fbe9ee"><i style="background:#c8375d"></i><div><b>Atenção prioritária</b><span>Relações</span></div></div>
-          <div class="pri" style="background:#f0eaf8"><i style="background:#5a2a86"></i><div><b>Fortalecer</b><span>Cultura · Competências</span></div></div>
-          <div class="pri" style="background:#e3f8fa"><i style="background:#0f9aa8"></i><div><b>Potencialidades</b><span>Bem-estar · Propósito</span></div></div>
+  <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px">
+    <div class="pas" data-anim="up" style="flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;padding:20px 24px;--d:.2s"><i>01</i><div><b style="font-size:28px">Diagnóstico</b><span style="font-size:22px">As 6 dimensões, com dados e escuta da rede.</span></div></div>
+    <div class="pas" data-anim="up" style="flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;padding:20px 24px;--d:.3s"><i>02</i><div><b style="font-size:28px">Linha de Base</b><span style="font-size:22px">A fotografia inicial dos indicadores.</span></div></div>
+    <div class="pas" data-anim="up" style="flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;padding:20px 24px;--d:.4s"><i>03</i><div><b style="font-size:28px">Mapa de Prioridades</b><span style="font-size:22px">O que demanda atenção e o que fortalecer.</span></div></div>
+    <div class="pas" data-anim="up" style="flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:8px;padding:20px 24px;--d:.5s;background:#38164e;color:#fff"><i>04</i><div><b style="font-size:28px">Plano VIVA da Rede</b><span style="font-size:22px;color:rgba(255,255,255,.88)">Metas, ações, responsabilidades e cronograma.</span></div></div>
+  </div>
+  <div class="painel" data-anim="zoom" style="--d:.65s;flex:1">
+    <div class="painel-t"><b>Painel diagnóstico da rede</b><span>Exemplo ilustrativo</span></div>
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:18px;flex:1;min-height:0">
+      <div class="pc"><h4>Linha de Base por dimensão</h4>
+        <div style="flex:1;min-height:0;display:flex;gap:14px;padding:0 6px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0">
+              <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border-bottom:2px solid #d9d1e3">
+                <div data-anim="fade" style="--d:1.40s;font-size:24px;font-weight:800;color:#0f9aa8;margin-bottom:6px">72%</div>
+                <div data-anim="grow" style="--d:0.90s;width:62%;height:72%;background:#0f9aa8;border-radius:8px 8px 0 0;transform-origin:bottom"></div>
+              </div>
+              <div style="font-size:20px;font-weight:600;white-space:nowrap">Bem-estar</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0">
+              <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border-bottom:2px solid #d9d1e3">
+                <div data-anim="fade" style="--d:1.48s;font-size:24px;font-weight:800;color:#5a2a86;margin-bottom:6px">65%</div>
+                <div data-anim="grow" style="--d:0.98s;width:62%;height:65%;background:#5a2a86;border-radius:8px 8px 0 0;transform-origin:bottom"></div>
+              </div>
+              <div style="font-size:20px;font-weight:600;white-space:nowrap">Forças</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0">
+              <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border-bottom:2px solid #d9d1e3">
+                <div data-anim="fade" style="--d:1.56s;font-size:24px;font-weight:800;color:#c8375d;margin-bottom:6px">48%</div>
+                <div data-anim="grow" style="--d:1.06s;width:62%;height:48%;background:#c8375d;border-radius:8px 8px 0 0;transform-origin:bottom"></div>
+              </div>
+              <div style="font-size:20px;font-weight:600;white-space:nowrap">Relações</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0">
+              <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border-bottom:2px solid #d9d1e3">
+                <div data-anim="fade" style="--d:1.64s;font-size:24px;font-weight:800;color:#0f9aa8;margin-bottom:6px">70%</div>
+                <div data-anim="grow" style="--d:1.14s;width:62%;height:70%;background:#0f9aa8;border-radius:8px 8px 0 0;transform-origin:bottom"></div>
+              </div>
+              <div style="font-size:20px;font-weight:600;white-space:nowrap">Propósito</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0">
+              <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border-bottom:2px solid #d9d1e3">
+                <div data-anim="fade" style="--d:1.72s;font-size:24px;font-weight:800;color:#5a2a86;margin-bottom:6px">62%</div>
+                <div data-anim="grow" style="--d:1.22s;width:62%;height:62%;background:#5a2a86;border-radius:8px 8px 0 0;transform-origin:bottom"></div>
+              </div>
+              <div style="font-size:20px;font-weight:600;white-space:nowrap">Competências</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0">
+              <div style="flex:1;width:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border-bottom:2px solid #d9d1e3">
+                <div data-anim="fade" style="--d:1.80s;font-size:24px;font-weight:800;color:#5a2a86;margin-bottom:6px">54%</div>
+                <div data-anim="grow" style="--d:1.30s;width:62%;height:54%;background:#5a2a86;border-radius:8px 8px 0 0;transform-origin:bottom"></div>
+              </div>
+              <div style="font-size:20px;font-weight:600;white-space:nowrap">Cultura</div>
+            </div>
+        </div>
+      </div>
+      <div class="pc"><h4>Mapa de Prioridades</h4>
+        <div style="flex:1;min-height:0;display:flex;align-items:center;gap:30px">
+          <div data-anim="zoom" style="--d:1.2s;position:relative;width:250px;height:250px;flex:none;border-radius:50%;background:conic-gradient(#c8375d 0deg 58deg,#f7f5fa 58deg 62deg,#5a2a86 62deg 238deg,#f7f5fa 238deg 242deg,#0f9aa8 242deg 356deg,#f7f5fa 356deg 360deg)">
+            <div style="position:absolute;inset:52px;border-radius:50%;background:#f7f5fa;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1"><b style="font-size:56px;font-weight:800;color:#38164e">6</b><span style="font-size:19px;font-weight:600;color:#6a5b7a;margin-top:4px">dimensões</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+              <div data-anim="in" style="--d:1.50s;display:flex;align-items:flex-start;gap:14px"><i style="width:18px;height:18px;border-radius:50%;background:#c8375d;flex:none;margin-top:6px"></i><div><b style="display:block;font-size:24px;font-weight:800;line-height:1.15">Atenção prioritária <span style="color:#c8375d">· 1</span></b><span style="display:block;font-size:21px;line-height:1.2;color:#3f2b52">Relações</span></div></div>
+              <div data-anim="in" style="--d:1.62s;display:flex;align-items:flex-start;gap:14px"><i style="width:18px;height:18px;border-radius:50%;background:#5a2a86;flex:none;margin-top:6px"></i><div><b style="display:block;font-size:24px;font-weight:800;line-height:1.15">Fortalecer <span style="color:#5a2a86">· 3</span></b><span style="display:block;font-size:21px;line-height:1.2;color:#3f2b52">Forças · Competências · Cultura</span></div></div>
+              <div data-anim="in" style="--d:1.74s;display:flex;align-items:flex-start;gap:14px"><i style="width:18px;height:18px;border-radius:50%;background:#0f9aa8;flex:none;margin-top:6px"></i><div><b style="display:block;font-size:24px;font-weight:800;line-height:1.15">Potencialidades <span style="color:#0f9aa8">· 2</span></b><span style="display:block;font-size:21px;line-height:1.2;color:#3f2b52">Bem-estar · Propósito</span></div></div>
+          </div>
         </div>
       </div>
     </div>

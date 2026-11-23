@@ -110,6 +110,21 @@
   .trilha { display: flex; align-items: center; justify-content: space-between; gap: 6px; background: #38164e; color: #fff; border-radius: 8px; padding: 14px 18px; font-size: 22px; font-weight: 700; }
   .trilha u { text-decoration: none; color: #22c9d6; }
   .trilha .f { color: #22c9d6; }
+  /* ── Eixo 1: carrossel de stories ───────────────────────────── */
+  .rl-pal { position: relative; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+  .rl { position: absolute; left: 50%; top: 50%; width: 400px; height: 711px; margin: -355px 0 0 -200px; border-radius: 36px; border: 7px solid #12061c; background: #12061c; overflow: hidden; box-shadow: 0 50px 90px -40px rgba(0,0,0,.85); animation: ecReel 24s cubic-bezier(.65,0,.25,1) infinite both; will-change: transform; }
+  .rl > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .rl::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(18,6,28,.35), rgba(18,6,28,0) 18%, rgba(18,6,28,0) 52%, rgba(18,6,28,.92)); }
+  .rl-pr { position: absolute; z-index: 2; top: 16px; left: 18px; right: 18px; display: flex; gap: 6px; }
+  .rl-pr i { flex: 1; height: 4px; border-radius: 2px; background: rgba(255,255,255,.35); }
+  .rl-pr i.on { background: #fff; }
+  .rl-tag { position: absolute; z-index: 2; top: 34px; left: 18px; background: rgba(34,201,214,.9); color: #12333a; border-radius: 100px; padding: 5px 14px; font-size: 15px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+  .rl-ac { position: absolute; z-index: 2; right: 16px; bottom: 150px; display: flex; flex-direction: column; align-items: center; gap: 6px; color: #fff; font-size: 17px; font-weight: 700; }
+  .rl-ac svg { margin-top: 12px; }
+  .rl-tx { position: absolute; z-index: 2; left: 22px; right: 70px; bottom: 30px; color: #fff; display: flex; flex-direction: column; gap: 14px; }
+  .rl-us { display: flex; align-items: center; gap: 12px; font-size: 21px; font-weight: 700; }
+  .rl-us img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+  .rl-tx b { font-size: 30px; font-weight: 800; line-height: 1.15; letter-spacing: -.01em; }
   /* ── Painel de Acompanhamento (slide Tecnologia e dados) ─────── */
   .pa-jan { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 50px 100px -40px rgba(0,0,0,.75); display: flex; flex-direction: column; }
   .pa-bar { height: 34px; background: #ece6f2; display: flex; align-items: center; gap: 8px; padding: 0 16px; font-size: 16px; font-weight: 600; color: #6a5b7a; }
@@ -207,6 +222,17 @@
   @keyframes ecRing { from { opacity: 0; transform: scale(.72); } to { opacity: 1; transform: none; } }
   @keyframes ecScreen { from { opacity: 0; transform: perspective(1600px) translateY(70px) rotateX(14deg) scale(.94); } to { opacity: 1; transform: none; } }
   @keyframes ecPhone { from { opacity: 0; transform: translate(120px, 40px) rotate(8deg); } to { opacity: 1; transform: none; } }
+  @keyframes ecReel {
+    0.00%, 10.00% { transform: translateX(0px) scale(1); opacity: 1; z-index: 5; filter: brightness(1); }
+    12.50%, 22.50% { transform: translateX(-380px) scale(0.8); opacity: 1; z-index: 4; filter: brightness(0.62); }
+    25.00%, 35.00% { transform: translateX(-690px) scale(0.64); opacity: 0.55; z-index: 3; filter: brightness(0.45); }
+    37.50%, 47.50% { transform: translateX(-900px) scale(0.52); opacity: 0; z-index: 1; filter: brightness(0.4); }
+    50.00%, 60.00% { transform: translateX(0) scale(.4); opacity: 0; z-index: 0; filter: brightness(.4); }
+    62.50%, 72.50% { transform: translateX(900px) scale(0.52); opacity: 0; z-index: 1; filter: brightness(0.4); }
+    75.00%, 85.00% { transform: translateX(690px) scale(0.64); opacity: 0.55; z-index: 3; filter: brightness(0.45); }
+    87.50%, 97.50% { transform: translateX(380px) scale(0.8); opacity: 1; z-index: 4; filter: brightness(0.62); }
+    100% { transform: translateX(0px) scale(1); opacity: 1; z-index: 5; filter: brightness(1); }
+  }
   @keyframes ecGrow { from { opacity: 0; transform: scaleY(.3); } to { opacity: 1; transform: none; } }
   @keyframes ecDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
   @keyframes ecSpot6 { 0% { opacity: 0; transform: scale(.96); } 25% { opacity: 1; transform: scale(1.03); background: #22c9d6; } 100% { opacity: 1; transform: none; background: #f4f2f7; } }
@@ -590,46 +616,54 @@
   <div class="rodape"><span>VIVA Educação</span><span>11</span></div>
 </section>
 
-<section data-label="Eixo 1 · Formação" class="s dark tr-split" data-speaker-notes="Eixo 1: desenvolver quem transforma a educação. A formação alcança gestores, professores, equipes escolares e multiplicadores, que levam o VIVA adiante na rede. As fotos são ilustrativas." style="padding:60px 110px 84px;gap:28px">
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px">
+<section data-label="Eixo 1 · Formação" class="s dark tr-split" data-speaker-notes="Eixo 1: desenvolver quem transforma a educação. A formação alcança gestores, professores, equipes escolares e multiplicadores, que levam o VIVA adiante na rede. O carrossel passa sozinho. As fotos são ilustrativas." style="padding:56px 110px 70px;gap:10px;background:radial-gradient(60% 70% at 50% 62%,rgba(34,201,214,.16),rgba(56,22,78,0) 70%),#38164e">
+  <div style="position:relative;z-index:6;display:flex;align-items:flex-end;justify-content:space-between;gap:40px">
     <div style="display:flex;flex-direction:column;gap:8px">
       <div class="kick" data-anim="in">Eixo 1</div>
-      <div class="h" data-anim="up" style="--d:.1s;font-size:84px;color:#fff">Formação</div>
+      <div class="h" data-anim="up" style="--d:.1s;font-size:80px;color:#fff">Formação</div>
     </div>
-    <div data-anim="fade" style="--d:.25s;font-size:34px;line-height:1.3;color:#9fe9f0;max-width:620px;text-align:right;padding-bottom:10px">Desenvolver quem transforma a educação</div>
+    <div data-anim="fade" style="--d:.25s;font-size:34px;line-height:1.3;color:#9fe9f0;max-width:560px;text-align:right;padding-bottom:10px">Desenvolver quem transforma a educação</div>
   </div>
-  <div style="flex:1;min-height:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;align-items:start">
-    <div data-anim="up" style="--d:0.35s;background:#fff;color:#2a0f3b;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)">
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div style="width:46px;height:46px;border-radius:50%;padding:3px;background:conic-gradient(#22c9d6,#8b3fd1,#c8375d,#22c9d6);flex:none"><div style="width:100%;height:100%;border-radius:50%;background:#38164e;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#22c9d6;letter-spacing:-.02em">VIVA</div></div><div style="flex:1;min-width:0;line-height:1.15"><b style="display:block;font-size:20px;font-weight:700">viva.educacao</b><span style="display:block;font-size:16px;color:#6a5b7a">Eixo 1 · Formação</span></div><span style="font-size:24px;font-weight:800;color:#6a5b7a;letter-spacing:.05em">···</span></div>
-      <img src="img/eixo1/gestores.jpg" alt="Gestores" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover">
-      <div style="padding:12px 16px 16px;display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:center;gap:14px"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke="#c8375d" style="fill:#c8375d"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="27" height="27" stroke="#2a0f3b"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke="#2a0f3b"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="27" height="27" stroke="#2a0f3b" style="margin-left:auto"><path d="M6 3.5h12v17l-6-4-6 4z"/></svg></div>
-        <div style="font-size:19px;line-height:1.3"><b style="font-weight:800;color:#38164e;font-size:23px">Gestores</b><br>Liderar com cuidado e visão de rede.</div>
-      </div>
+  <div class="rl-pal" data-anim="up" style="--d:.3s">
+    <div class="rl" style="animation-delay:0s"><img src="img/eixo1/gestores.jpg" alt="Gestores">
+      <div class="rl-pr"><i class="on"></i><i></i><i></i><i></i></div>
+      <div class="rl-ac"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.8-8.5 11-8.5 11z" fill="#f0456b"/></svg>248<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M4 4.5h16v12H9l-5 4z"/></svg>31</div>
+      <div class="rl-tx"><div class="rl-us"><img src="img/eixo1/gestores.jpg" alt="">Gestores</div><b>Liderar com cuidado e visão de rede</b></div>
     </div>
-    <div data-anim="up" style="--d:0.50s;background:#fff;color:#2a0f3b;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)">
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div style="width:46px;height:46px;border-radius:50%;padding:3px;background:conic-gradient(#22c9d6,#8b3fd1,#c8375d,#22c9d6);flex:none"><div style="width:100%;height:100%;border-radius:50%;background:#38164e;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#22c9d6;letter-spacing:-.02em">VIVA</div></div><div style="flex:1;min-width:0;line-height:1.15"><b style="display:block;font-size:20px;font-weight:700">viva.educacao</b><span style="display:block;font-size:16px;color:#6a5b7a">Eixo 1 · Formação</span></div><span style="font-size:24px;font-weight:800;color:#6a5b7a;letter-spacing:.05em">···</span></div>
-      <img src="img/eixo1/professores.jpg" alt="Professores" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover">
-      <div style="padding:12px 16px 16px;display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:center;gap:14px"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke="#c8375d" style="fill:#c8375d"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="27" height="27" stroke="#2a0f3b"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke="#2a0f3b"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="27" height="27" stroke="#2a0f3b" style="margin-left:auto"><path d="M6 3.5h12v17l-6-4-6 4z"/></svg></div>
-        <div style="font-size:19px;line-height:1.3"><b style="font-weight:800;color:#38164e;font-size:23px">Professores</b><br>Cuidar de si para cuidar das relações.</div>
-      </div>
+    <div class="rl" style="animation-delay:-21s"><img src="img/eixo1/professores.jpg" alt="Professores">
+      <div class="rl-pr"><i></i><i class="on"></i><i></i><i></i></div>
+      <div class="rl-ac"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.8-8.5 11-8.5 11z" fill="#f0456b"/></svg>512<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M4 4.5h16v12H9l-5 4z"/></svg>64</div>
+      <div class="rl-tx"><div class="rl-us"><img src="img/eixo1/professores.jpg" alt="">Professores</div><b>Cuidar de si para cuidar das relações</b></div>
     </div>
-    <div data-anim="up" style="--d:0.65s;background:#fff;color:#2a0f3b;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)">
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div style="width:46px;height:46px;border-radius:50%;padding:3px;background:conic-gradient(#22c9d6,#8b3fd1,#c8375d,#22c9d6);flex:none"><div style="width:100%;height:100%;border-radius:50%;background:#38164e;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#22c9d6;letter-spacing:-.02em">VIVA</div></div><div style="flex:1;min-width:0;line-height:1.15"><b style="display:block;font-size:20px;font-weight:700">viva.educacao</b><span style="display:block;font-size:16px;color:#6a5b7a">Eixo 1 · Formação</span></div><span style="font-size:24px;font-weight:800;color:#6a5b7a;letter-spacing:.05em">···</span></div>
-      <img src="img/eixo1/equipes.jpg" alt="Equipes escolares" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover">
-      <div style="padding:12px 16px 16px;display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:center;gap:14px"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke="#c8375d" style="fill:#c8375d"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="27" height="27" stroke="#2a0f3b"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke="#2a0f3b"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="27" height="27" stroke="#2a0f3b" style="margin-left:auto"><path d="M6 3.5h12v17l-6-4-6 4z"/></svg></div>
-        <div style="font-size:19px;line-height:1.3"><b style="font-weight:800;color:#38164e;font-size:23px">Equipes escolares</b><br>Toda a escola envolvida no processo.</div>
-      </div>
+    <div class="rl" style="animation-delay:-18s"><img src="img/eixo1/equipes.jpg" alt="Equipes escolares">
+      <div class="rl-pr"><i></i><i></i><i class="on"></i><i></i></div>
+      <div class="rl-ac"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.8-8.5 11-8.5 11z" fill="#f0456b"/></svg>187<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M4 4.5h16v12H9l-5 4z"/></svg>22</div>
+      <div class="rl-tx"><div class="rl-us"><img src="img/eixo1/equipes.jpg" alt="">Equipes escolares</div><b>Toda a escola envolvida no processo</b></div>
     </div>
-    <div data-anim="up" style="--d:0.80s;background:#fff;color:#2a0f3b;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)">
-      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px"><div style="width:46px;height:46px;border-radius:50%;padding:3px;background:conic-gradient(#22c9d6,#8b3fd1,#c8375d,#22c9d6);flex:none"><div style="width:100%;height:100%;border-radius:50%;background:#38164e;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#22c9d6;letter-spacing:-.02em">VIVA</div></div><div style="flex:1;min-width:0;line-height:1.15"><b style="display:block;font-size:20px;font-weight:700">viva.educacao</b><span style="display:block;font-size:16px;color:#6a5b7a">Eixo 1 · Formação</span></div><span style="font-size:24px;font-weight:800;color:#6a5b7a;letter-spacing:.05em">···</span></div>
-      <img src="img/eixo1/multiplicadores.jpg" alt="Multiplicadores" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover">
-      <div style="padding:12px 16px 16px;display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:center;gap:14px"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke="#c8375d" style="fill:#c8375d"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="27" height="27" stroke="#2a0f3b"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="26" height="26" stroke="#2a0f3b"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" width="27" height="27" stroke="#2a0f3b" style="margin-left:auto"><path d="M6 3.5h12v17l-6-4-6 4z"/></svg></div>
-        <div style="font-size:19px;line-height:1.3"><b style="font-weight:800;color:#38164e;font-size:23px">Multiplicadores</b><br>Quem leva o VIVA adiante na rede.</div>
-      </div>
+    <div class="rl" style="animation-delay:-15s"><img src="img/eixo1/multiplicadores.jpg" alt="Multiplicadores">
+      <div class="rl-pr"><i></i><i></i><i></i><i class="on"></i></div>
+      <div class="rl-ac"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.8-8.5 11-8.5 11z" fill="#f0456b"/></svg>326<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M4 4.5h16v12H9l-5 4z"/></svg>41</div>
+      <div class="rl-tx"><div class="rl-us"><img src="img/eixo1/multiplicadores.jpg" alt="">Multiplicadores</div><b>Quem leva o VIVA adiante na rede</b></div>
+    </div>
+    <div class="rl" style="animation-delay:-12s"><img src="img/eixo1/gestores.jpg" alt="Gestores">
+      <div class="rl-pr"><i class="on"></i><i></i><i></i><i></i></div>
+      <div class="rl-ac"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.8-8.5 11-8.5 11z" fill="#f0456b"/></svg>248<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M4 4.5h16v12H9l-5 4z"/></svg>31</div>
+      <div class="rl-tx"><div class="rl-us"><img src="img/eixo1/gestores.jpg" alt="">Gestores</div><b>Liderar com cuidado e visão de rede</b></div>
+    </div>
+    <div class="rl" style="animation-delay:-9s"><img src="img/eixo1/professores.jpg" alt="Professores">
+      <div class="rl-pr"><i></i><i class="on"></i><i></i><i></i></div>
+      <div class="rl-ac"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.8-8.5 11-8.5 11z" fill="#f0456b"/></svg>512<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M4 4.5h16v12H9l-5 4z"/></svg>64</div>
+      <div class="rl-tx"><div class="rl-us"><img src="img/eixo1/professores.jpg" alt="">Professores</div><b>Cuidar de si para cuidar das relações</b></div>
+    </div>
+    <div class="rl" style="animation-delay:-6s"><img src="img/eixo1/equipes.jpg" alt="Equipes escolares">
+      <div class="rl-pr"><i></i><i></i><i class="on"></i><i></i></div>
+      <div class="rl-ac"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.8-8.5 11-8.5 11z" fill="#f0456b"/></svg>187<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M4 4.5h16v12H9l-5 4z"/></svg>22</div>
+      <div class="rl-tx"><div class="rl-us"><img src="img/eixo1/equipes.jpg" alt="">Equipes escolares</div><b>Toda a escola envolvida no processo</b></div>
+    </div>
+    <div class="rl" style="animation-delay:-3s"><img src="img/eixo1/multiplicadores.jpg" alt="Multiplicadores">
+      <div class="rl-pr"><i></i><i></i><i></i><i class="on"></i></div>
+      <div class="rl-ac"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.8-8.5 11-8.5 11z" fill="#f0456b"/></svg>326<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M4 4.5h16v12H9l-5 4z"/></svg>41</div>
+      <div class="rl-tx"><div class="rl-us"><img src="img/eixo1/multiplicadores.jpg" alt="">Multiplicadores</div><b>Quem leva o VIVA adiante na rede</b></div>
     </div>
   </div>
   <div class="rodape"><span>VIVA Educação</span><span>12</span></div>

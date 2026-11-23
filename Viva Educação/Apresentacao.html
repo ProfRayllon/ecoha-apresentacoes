@@ -138,6 +138,31 @@
   .rl-dots { display: flex; gap: 10px; margin-left: 10px; }
   .rl-dots i { width: 12px; height: 12px; border-radius: 6px; background: rgba(255,255,255,.3); transition: width .4s, background .4s; }
   .rl-dots i.on { width: 38px; background: #22c9d6; }
+  /* ── Eixo 2: grade que abre cada foto na seta ─────────────────── */
+  .ex-grid { position: relative; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 5px; border-radius: 12px; overflow: hidden; }
+  .ex-tile { position: relative; overflow: hidden; aspect-ratio: 1/1; transition: filter .5s; }
+  .ex-tile img, .ex-big img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ex-tile > div { position: absolute; left: 0; right: 0; bottom: 0; padding: 44px 14px 12px; background: linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85)); color: #fff; font-size: 21px; font-weight: 700; line-height: 1.15; }
+  .ex-grid.aberto .ex-tile { filter: brightness(.45) saturate(.7); }
+  .ex-big { position: absolute; z-index: 5; overflow: hidden; border-radius: 4px; opacity: 0; pointer-events: none; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); }
+  .ex-big.anima { transition: left .55s cubic-bezier(.65,0,.25,1), top .55s cubic-bezier(.65,0,.25,1), width .55s cubic-bezier(.65,0,.25,1), height .55s cubic-bezier(.65,0,.25,1), border-radius .55s, opacity .25s; }
+  .ex-big::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(26,8,41,0) 55%, rgba(26,8,41,.9)); }
+  .ex-big > div { position: absolute; z-index: 2; left: 34px; right: 34px; bottom: 28px; color: #fff; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; opacity: 0; transition: opacity .35s; }
+  .ex-big.cheio > div { opacity: 1; transition-delay: .35s; }
+  .ex-big b { font-size: 46px; font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
+  .ex-big small { background: #22c9d6; color: #12333a; border-radius: 100px; padding: 6px 16px; font-size: 19px; font-weight: 800; white-space: nowrap; }
+  .ex-info { position: relative; min-height: 300px; }
+  .ex-t { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 18px; opacity: 0; transform: translateY(18px); transition: opacity .45s, transform .45s; pointer-events: none; }
+  .ex-t.on { opacity: 1; transform: none; transition-delay: .25s; }
+  .ex-t small { font-size: 22px; font-weight: 800; letter-spacing: .18em; color: #0e7b86; }
+  .ex-t b { font-size: 50px; font-weight: 800; letter-spacing: -.02em; line-height: 1.05; color: #38164e; }
+  .ex-t span { font-size: 29px; line-height: 1.45; color: #3f2b52; }
+  .ex-nav { display: flex; align-items: center; gap: 16px; }
+  .ex-nav button { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #d9d1e3; background: #fff; color: #38164e; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s, border-color .2s, color .2s; }
+  .ex-nav button:hover { background: #38164e; border-color: #38164e; color: #fff; }
+  .ex-dots { display: flex; gap: 8px; margin-left: 8px; }
+  .ex-dots i { width: 10px; height: 10px; border-radius: 5px; background: #d9d1e3; transition: width .4s, background .4s; }
+  .ex-dots i.on { width: 30px; background: #22c9d6; }
   /* ── Painel de Acompanhamento (slide Tecnologia e dados) ─────── */
   .pa-jan { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 50px 100px -40px rgba(0,0,0,.75); display: flex; flex-direction: column; }
   .pa-bar { height: 34px; background: #ece6f2; display: flex; align-items: center; gap: 8px; padding: 0 16px; font-size: 16px; font-weight: 600; color: #6a5b7a; }
@@ -690,13 +715,25 @@
   <div class="rodape"><span>VIVA Educação</span><span>12</span></div>
 </section>
 
-<section data-label="Eixo 2 · Implementação" class="s white tr-split" data-speaker-notes="Eixo 2: fazer a cultura acontecer. São nove tipos de experiência, escolhidos a partir das necessidades de cada rede. As fotos são ilustrativas." style="flex-direction:row;align-items:center;gap:70px;padding:50px 110px 80px">
-  <div style="flex:1;display:flex;flex-direction:column;gap:22px">
+<section id="eixo2-implementacao" data-label="Eixo 2 · Implementação" class="s white tr-split" data-speaker-notes="Eixo 2: fazer a cultura acontecer. Use a seta (ou o passador) para abrir cada uma das nove experiências na tela. Depois da última, a grade volta inteira e a próxima seta segue para o próximo slide. Também dá para clicar numa foto. As fotos são ilustrativas." style="flex-direction:row;align-items:center;gap:70px;padding:50px 110px 80px">
+  <div style="flex:1;display:flex;flex-direction:column;gap:22px;min-width:0">
     <div class="kick" data-anim="in" style="color:#0e7b86">Eixo 2</div>
     <div class="h" data-anim="up" style="--d:.1s;font-size:80px">Implementação</div>
     <div data-anim="fade" style="--d:.2s;font-size:38px;font-weight:600;color:#5a2a86">Fazer a cultura acontecer</div>
-    <div data-anim="up" style="--d:.3s;font-size:30px;line-height:1.4;color:#3f2b52;margin-top:10px">Nove tipos de experiência, da sala de aula à comunidade.</div>
-    <div data-anim="up" style="--d:.45s;border-left:6px solid #22c9d6;background:#e3f8fa;border-radius:6px;padding:20px 24px;font-size:27px;font-weight:600;line-height:1.35;color:#0e5f67;margin-top:10px">As experiências são definidas a partir das necessidades de cada rede.</div>
+    <div data-anim="fade" style="--d:.3s;width:90px;height:3px;background:#e2dbea;margin:6px 0"></div>
+    <div class="ex-info" data-anim="up" style="--d:.35s">
+      <div class="ex-t on"><span>Nove tipos de experiência, da sala de aula à comunidade.</span><span style="border-left:6px solid #22c9d6;background:#e3f8fa;border-radius:6px;padding:20px 24px;font-size:27px;font-weight:600;line-height:1.35;color:#0e5f67">As experiências são definidas a partir das necessidades de cada rede.</span></div>
+      <div class="ex-t"><small>01 / 09</small><b>Campanhas</b><span>Campanhas temáticas que mobilizam toda a rede em torno do bem-estar, com materiais e ações nas escolas.</span></div>
+      <div class="ex-t"><small>02 / 09</small><b>Workshops</b><span>Encontros práticos com os profissionais da educação para aprofundar temas e construir soluções juntos.</span></div>
+      <div class="ex-t"><small>03 / 09</small><b>Oficinas</b><span>Atividades mão na massa com estudantes para desenvolver competências socioemocionais.</span></div>
+      <div class="ex-t"><small>04 / 09</small><b>Grupos de vivências</b><span>Rodas de conversa e escuta que fortalecem os vínculos e o cuidado entre profissionais.</span></div>
+      <div class="ex-t"><small>05 / 09</small><b>Projetos escolares</b><span>Projetos criados pela própria escola, que conectam aprendizagem, bem-estar e território.</span></div>
+      <div class="ex-t"><small>06 / 09</small><b>Atividades extraclasse</b><span>Experiências fora da sala de aula que ampliam a convivência e o sentimento de pertencimento.</span></div>
+      <div class="ex-t"><small>07 / 09</small><b>Experiências de bem‑estar</b><span>Momentos de pausa, relaxamento e autocuidado para quem cuida da educação.</span></div>
+      <div class="ex-t"><small>08 / 09</small><b>Protagonismo estudantil</b><span>Estudantes à frente de iniciativas, apresentando ideias e liderando ações na escola.</span></div>
+      <div class="ex-t"><small>09 / 09</small><b>Família e comunidade</b><span>Encontros que aproximam famílias e comunidade da escola e do cuidado com os estudantes.</span></div>
+    </div>
+    <div class="ex-nav" data-anim="fade" style="--d:.5s"><button class="ex-ant" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button class="ex-prox" type="button" aria-label="Próxima"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><div class="ex-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
   </div>
   <div data-anim="up" style="--d:.15s;width:850px;flex:none;background:#fff;border-radius:22px;box-shadow:0 34px 76px -38px rgba(42,15,59,.5);border:1px solid #ece6f2;padding:18px;display:flex;flex-direction:column;gap:14px">
     <div style="display:flex;align-items:center;gap:22px;padding:2px 6px">
@@ -704,18 +741,77 @@
       <div style="flex:1;line-height:1.2"><b style="display:block;font-size:26px;font-weight:800;color:#2a0f3b">viva.educacao</b><span style="font-size:20px;color:#6a5b7a">Eixo 2 · Implementação</span></div>
       <div style="text-align:center;line-height:1.1"><b style="display:block;font-size:30px;font-weight:800;color:#38164e">9</b><span style="font-size:19px;color:#3f2b52">experiências</span></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;border-radius:12px;overflow:hidden">
-      <div data-anim="zoom" style="--d:0.30s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/campanhas.jpg" alt="Campanhas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Campanhas</div></div>
-      <div data-anim="zoom" style="--d:0.38s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/workshops.jpg" alt="Workshops" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Workshops</div></div>
-      <div data-anim="zoom" style="--d:0.46s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/oficinas.jpg" alt="Oficinas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Oficinas</div></div>
-      <div data-anim="zoom" style="--d:0.54s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/vivencias.jpg" alt="Grupos de vivências" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Grupos de vivências</div></div>
-      <div data-anim="zoom" style="--d:0.62s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/projetos.jpg" alt="Projetos escolares" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Projetos escolares</div></div>
-      <div data-anim="zoom" style="--d:0.70s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/extraclasse.jpg" alt="Atividades extraclasse" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Atividades extraclasse</div></div>
-      <div data-anim="zoom" style="--d:0.78s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/bem-estar.jpg" alt="Experiências de bem-estar" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Experiências de bem‑estar</div></div>
-      <div data-anim="zoom" style="--d:0.86s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/protagonismo.jpg" alt="Protagonismo estudantil" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Protagonismo estudantil</div></div>
-      <div data-anim="zoom" style="--d:0.94s;position:relative;overflow:hidden;aspect-ratio:1/1"><img src="img/eixo2/familia.jpg" alt="Família e comunidade" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;background:linear-gradient(rgba(26,8,41,0),rgba(26,8,41,.85));color:#fff;font-size:21px;font-weight:700;line-height:1.15">Família e comunidade</div></div>
+    <div class="ex-grid">
+        <div class="ex-tile" data-anim="zoom" style="--d:0.30s"><img src="img/eixo2/campanhas.jpg" alt="Campanhas"><div>Campanhas</div></div>
+        <div class="ex-tile" data-anim="zoom" style="--d:0.38s"><img src="img/eixo2/workshops.jpg" alt="Workshops"><div>Workshops</div></div>
+        <div class="ex-tile" data-anim="zoom" style="--d:0.46s"><img src="img/eixo2/oficinas.jpg" alt="Oficinas"><div>Oficinas</div></div>
+        <div class="ex-tile" data-anim="zoom" style="--d:0.54s"><img src="img/eixo2/vivencias.jpg" alt="Grupos de vivências"><div>Grupos de vivências</div></div>
+        <div class="ex-tile" data-anim="zoom" style="--d:0.62s"><img src="img/eixo2/projetos.jpg" alt="Projetos escolares"><div>Projetos escolares</div></div>
+        <div class="ex-tile" data-anim="zoom" style="--d:0.70s"><img src="img/eixo2/extraclasse.jpg" alt="Atividades extraclasse"><div>Atividades extraclasse</div></div>
+        <div class="ex-tile" data-anim="zoom" style="--d:0.78s"><img src="img/eixo2/bem-estar.jpg" alt="Experiências de bem‑estar"><div>Experiências de bem‑estar</div></div>
+        <div class="ex-tile" data-anim="zoom" style="--d:0.86s"><img src="img/eixo2/protagonismo.jpg" alt="Protagonismo estudantil"><div>Protagonismo estudantil</div></div>
+        <div class="ex-tile" data-anim="zoom" style="--d:0.94s"><img src="img/eixo2/familia.jpg" alt="Família e comunidade"><div>Família e comunidade</div></div>
+      <div class="ex-big"><img src="img/eixo2/campanhas.jpg" alt=""><div><b>Campanhas</b><small>01 / 09</small></div></div>
     </div>
   </div>
+  <script>
+(function () {
+  var sec = document.getElementById('eixo2-implementacao');
+  if (!sec || sec.dataset.pronto) return;
+  sec.dataset.pronto = '1';
+  var grid = sec.querySelector('.ex-grid'), big = sec.querySelector('.ex-big');
+  var tiles = sec.querySelectorAll('.ex-tile'), txt = sec.querySelectorAll('.ex-t'), dots = sec.querySelectorAll('.ex-dots i');
+  var nome = big.querySelector('b'), num = big.querySelector('small'), foto = big.querySelector('img');
+  var n = tiles.length, atual = 0, fila = 0, timer;   // 0 = grade; 1..n = foto aberta
+  function rect(k) { var t = tiles[k - 1]; return { left: t.offsetLeft, top: t.offsetTop, width: t.offsetWidth, height: t.offsetHeight }; }
+  function por(r) { big.style.left = r.left + 'px'; big.style.top = r.top + 'px'; big.style.width = r.width + 'px'; big.style.height = r.height + 'px'; }
+  function textos(k) {
+    txt.forEach(function (t, j) { t.classList.toggle('on', j === k); });
+    dots.forEach(function (d, j) { d.classList.toggle('on', j === k - 1); });
+  }
+  function abrir(k) {
+    var t = tiles[k - 1];
+    foto.src = t.querySelector('img').src; nome.textContent = t.querySelector('div').textContent;
+    num.textContent = (k < 10 ? '0' + k : k) + ' / 0' + n;
+    big.classList.remove('anima', 'cheio'); big.style.opacity = 1; big.style.borderRadius = '0px'; por(rect(k));
+    void big.offsetWidth;
+    big.classList.add('anima'); grid.classList.add('aberto');
+    por({ left: 0, top: 0, width: grid.clientWidth, height: grid.clientHeight }); big.style.borderRadius = '12px';
+    big.classList.add('cheio');
+  }
+  function fechar(k, depois) {
+    big.classList.remove('cheio'); big.style.borderRadius = '0px'; por(rect(k));
+    timer = setTimeout(function () { big.classList.remove('anima'); big.style.opacity = 0; if (!depois) grid.classList.remove('aberto'); depois && depois(); }, 560);
+  }
+  function ir(k) {
+    if (k === atual) return;
+    clearTimeout(timer);
+    var de = atual; atual = k; textos(k);
+    if (de === 0) abrir(k);
+    else fechar(de, k === 0 ? null : function () { abrir(k); });
+  }
+  function reset() { clearTimeout(timer); atual = 0; big.classList.remove('anima', 'cheio'); big.style.opacity = 0; grid.classList.remove('aberto'); textos(0); }
+  sec.querySelector('.ex-ant').addEventListener('click', function (e) { e.stopPropagation(); ir(atual > 0 ? atual - 1 : 0); });
+  sec.querySelector('.ex-prox').addEventListener('click', function (e) { e.stopPropagation(); ir(atual < n ? atual + 1 : 0); });
+  tiles.forEach(function (t, j) { t.addEventListener('click', function (e) { e.stopPropagation(); ir(j + 1); }); t.style.cursor = 'pointer'; });
+  big.addEventListener('click', function (e) { e.stopPropagation(); ir(0); });
+  // Setas do teclado / passador: abre cada foto; depois da última volta à grade e só então muda de slide
+  var fim = false;
+  window.addEventListener('keydown', function (e) {
+    if (!sec.hasAttribute('data-deck-active') || e.metaKey || e.ctrlKey || e.altKey) return;
+    var frente = /^(ArrowRight|ArrowDown|PageDown| |Spacebar)$/.test(e.key);
+    var tras = /^(ArrowLeft|ArrowUp|PageUp)$/.test(e.key);
+    if (frente && atual < n && !fim) { ir(atual + 1); }
+    else if (frente && atual === n) { ir(0); fim = true; }
+    else if (tras && atual > 0) { ir(atual - 1); fim = false; }
+    else if (tras && fim) { ir(n); fim = false; }
+    else return;
+    e.preventDefault(); e.stopImmediatePropagation();
+  }, true);
+  new MutationObserver(function () { if (!sec.hasAttribute('data-deck-active')) { reset(); fim = false; } })
+    .observe(sec, { attributes: true, attributeFilter: ['data-deck-active'] });
+})();
+</script>
   <div class="rodape"><span>VIVA Educação</span><span>13</span></div>
 </section>
 
